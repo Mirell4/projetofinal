@@ -3,52 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil Paciente</title>
+    <title>Perfil</title>
     <link rel="stylesheet" href="perfil.css">
     @vite('resources/css/perfil.css')
 </head>
 <body>
+
+<header>
     <div class="container">
-        <header>
-            <input type="search" placeholder="Procurar">
-        </header>
-
-        <div class="profile">
-            <img src="foto.jpeg" alt="Eloá Gabriely">
-            <h1>Eloá Gabriely Olímpio Pereira</h1>
-            <div class="info">
-                <p><i class="icon-briefcase"></i> Ds - Manhã</p>
-                <p><i class="icon-user"></i> Solteira</p>
-                <p><i class="icon-calendar"></i> 02/05/2007</p>
-                <p><i class="icon-location"></i> Cruzeiro - SP</p>
-            </div>
-            <div class="status">
-                <span>Ansiedade Grave</span>
-            </div>
+        <div class="back-icon">
+            <a href="#" aria-label="Voltar à página anterior">←</a>
         </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Procurar" aria-label="Buscar no perfil">
+        </div>
+    </div>
+</header>
 
-        <div class="details">
-            <div class="card">
+<main>
+    <div class="profile-container">
+        <section class="profile-header">
+            <div class="container">
+                <div class="profile-pic-container">
+                    <img class="profile-pic" src="fotoperfil.avif" alt="Foto de perfil de Eloá Gabriely Olímpio Pereira">
+                </div>
+                <div class="profile-details-container">
+                    <h1>Eloá Gabriely Olímpio Pereira</h1>
+                    <div class="profile-info">
+                        <span>Ds - Manhã</span>
+                        <span>Solteira</span>
+                        <span>02/05/2007</span>
+                        <span>Cruzeiro - SP</span>
+                    </div>
+                    <div class="status">
+                        Ansiedade Grave
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-details">
+            <div class="detail-box">
                 <h2>Ansiedade</h2>
                 <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint...</p>
             </div>
-            <div class="card">
-                <h2>Dificil Adaptação</h2>
+            <div class="detail-box">
+                <h2>Dificuldade de Adaptação</h2>
                 <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint...</p>
             </div>
-            <div class="card">
+            <div class="detail-box">
                 <h2>Frustrações</h2>
                 <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint...</p>
             </div>
-            <div class="card">
+            <div class="detail-box">
                 <h2>Crises Diárias</h2>
                 <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint...</p>
             </div>
-        </div>
-
-        <footer>
-            <button class="add-button">+</button>
-        </footer>
+        </section>
     </div>
+</main>
+
+<div class="add-button">
+    <a href="#" aria-label="Adicionar novo item">+</a>
+</div>
+
 </body>
 </html>

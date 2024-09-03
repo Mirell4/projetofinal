@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dados_saude', function (Blueprint $table) {
+        Schema::create('contatos', function (Blueprint $table) {
             $table->id();
+            $table->string('responsavel');
+            $table->string('nome');
+            $table->string('email');
+            $table->string('telefone');
             $table->timestamps();
+
+            $table->foreignId('aluno_id')->constrained();
         });
     }
 
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dados_saude');
+        Schema::dropIfExists('contatos');
     }
 };

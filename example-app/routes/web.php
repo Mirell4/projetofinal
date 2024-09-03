@@ -7,5 +7,5 @@ use Illuminate\Support\Facades\Route;
 // outras rotas necessárias
 
 Route::get('teste', function(){
-    return view('pesquisa');
+    return view('perfil');
 });

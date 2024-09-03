@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historico_atendimento', function (Blueprint $table) {
-            $table->id();
+        Schema::create('atendimentos', function (Blueprint $table) {
+            $table->id(); 
+            $table->date('data');
             $table->timestamps();
+
+
+            $table->foreignId('aluno_id')->constrained();
+            $table->foreignId('docentes_id')->constrained();
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('historico_atendimento');
+        Schema::dropIfExists('atendimentos');
     }
 };

@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alunos', function (Blueprint $table) {
+        Schema::create('acaos', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo');
-            $table->string('nome');
-            $table->string('horario');
-            $table->date('dias');
-            $table->date('termino');
             $table->boolean('status');
-            // Add other necessary columns here
-            $table->timestamps(); // Adds created_at and updated_at columns
+            $table->date('data');
+            $table->timestamps();
+
+            $table->foreignId('atendimentos_id')->constrained();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('alunos');
+        Schema::dropIfExists('acaos');
     }
 };
