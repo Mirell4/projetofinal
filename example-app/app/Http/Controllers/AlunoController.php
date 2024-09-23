@@ -35,6 +35,6 @@ class AlunoController extends Controller
         // Search for students whose name contains the provided substring
         $alunos = Aluno::where('nome', 'like', '%'.$nome.'%')->get();
 
-        return response()->json($alunos);
+        return view('perfil', compact('alunos'));
     }
 }

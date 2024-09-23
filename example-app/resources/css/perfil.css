@@ -1,223 +1,363 @@
-/* Estilo básico e reset */
-* {
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    list-style: none;
-}
-
-body {
-    background-color: #f7f7f7;
-    color: #333;
-}
-
-/* Contêiner Principal */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Header */
-header {
-    background-color: white;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-}
-
-header .container { 
+  }
+  
+  /* Estilo para o header */
+  .header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-
-.back-icon a {
-    text-decoration: none;
-    color: #333;
-    font-size: 24px;
-    padding: 0 10px;
-    margin-left: -140px;
-    transition: color 0.3s ease;
-}
-
-.back-icon a:hover,
-.back-icon a:focus {
-    color: #00A9A5;
-}
-
-.search-bar {
-    flex: 1;
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    padding: 20px;
+    background-color: #006876;
+    color: white;
+  }
+  
+  .back-button {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    text-decoration: none; /* Remove o sublinhado do link */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transição suave */
+  }
+  
+  .back-button:hover {
+    color: #cccccc; /* Cor mais escura ao passar o mouse */
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+  }
+  
+  .search-container {
     display: flex;
-    justify-content: center;
-}
-
-.search-bar input {
-    width: 100%;
-    max-width: 500px;
+    align-items: center;
+  }
+  
+  .search-bar {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    width: 400px; /* Ajuste a largura conforme necessário */
+    margin-right: 10px;
+  }
+  
+  .search-button {
+    background-color: #004d60;
+    border: none;
     padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+  }
+  
+  .back-button i {
+    font-size: 18px;   /* Ajuste o tamanho do ícone */
+  }
+  
+  /* Estilo para o container do perfil */
+  .profile-container {
+    width: 90%; /* Ajusta a largura conforme necessário */
+    max-width: 1200px; /* Define um máximo para a largura */
+    margin: 50px auto;
+    display: flex;
+    align-items: center; /* Alinha itens verticalmente no centro */
+    gap: 30px; /* Espaço maior entre a foto e as informações */
+    padding: 20px; /* Adiciona preenchimento interno */
+    border: 1px solid #ddd; /* Adiciona uma borda ao redor do container */
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+    background-color: #f9f9f9; /* Cor de fundo suave */
+  }
+  
+  /* Estilo para a foto de perfil */
+  .profile-pic {
+    width: 250px; /* Aumenta o tamanho da foto de perfil */
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover; /* Mantém a imagem proporcional */
+    cursor: pointer; /* Adiciona o cursor pointer para indicar que pode clicar */
+    margin-left: 80px;
+  }
+  
+  /* Estilo para os detalhes do perfil */
+  .profile-details {
+    text-align: center; /* Centraliza o texto dentro do container */
+    flex: 1; /* Permite que o container ocupe o espaço restante */
+  }
+  
+  .profile-name {
+    font-size: 36px; /* Tamanho do nome */
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .inline-details, .address-dob {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente os itens dentro do container */
+    gap: 20px; /* Espaço entre as informações */
+    flex-wrap: wrap; /* Permite quebra de linha se o espaço for pequeno */
+  }
+  
+  .inline-details p, .address-dob p {
+    margin: 5px 0;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #006876;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #004d60;
+  }
+  
+  /* Estilo para os modais */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 30px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Conteúdo do Modal */
+  .modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  /* Botão de fechar o modal */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #006876;
+    text-decoration: none;
+  }
+  
+  /* Títulos dentro do modal */
+  .modal-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #006876;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  
+  /* Inputs e Textareas dentro do modal */
+  .modal-content input[type="text"],
+  .modal-content input[type="email"],
+  .modal-content input[type="tel"],
+  .modal-content input[type="file"],
+  .modal-content textarea,
+  .modal-content input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    transition: border-color 0.3s ease;
-}
-
-.search-bar input:focus {
-    border-color: #00A9A5;
-    outline: none;
-}
-
-/* Container do Perfil */
-.profile-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 1% auto 0;
-}
-
-/* Perfil Header */
-.profile-header {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 20px;
-}
-
-.profile-header .container {
-    display: flex;
-    align-items: flex-start;
-}
-
-.profile-pic-container {
-    flex-shrink: 0;
-    margin-right: 20px;
+    box-sizing: border-box;
+  }
   
-}
-
-
-.profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #00A9A5;
-    
-}
-
-.profile-details-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.profile-header h1 {
-    font-size: 36px;
-    color: #00A9A5;
-    margin-bottom: 10px;
-}
-
-.profile-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-.profile-info span {
-    color: #555;
-}
-
-.status {
-    display: inline-block;
-    background-color: #F0F0F0;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #00A9A5;
-    margin-top: 15px;
-}
-
-/* Detalhes do Perfil */
-.profile-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.detail-box {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.detail-box h2 {
-    font-size: 20px;
-    color: #00A9A5;
-    margin-bottom: 10px;
-}
-
-.detail-box p {
+  .modal-content textarea {
+    resize: vertical;
+    height: 100px; /* Altura padrão do textarea */
+  }
+  
+  /* Botão de enviar no modal */
+  .modal-content button[type="submit"] {
+    width: 100%;
+    background-color: #006876;
+    color: white;
+    padding: 12px;
     font-size: 16px;
-    color: #555;
-}
-
-/* Botão de Adição */
-.add-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #00A9A5;
-    width: 60px;
-    height: 60px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .modal-content button[type="submit"]:hover {
+    background-color: #004d60;
+  }
+  
+  /* Estilo para anexos de arquivos no modal */
+  .modal-content input[type="file"] {
+    padding: 5px;
+  }
+  
+  /* Mensagens de erro ou avisos */
+  .modal-content .error-message {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-content .success-message {
+    color: #4CAF50;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para a área de comentários */
+  #commentsArea {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px; /* Ajuste conforme necessário */
+    display: flex;
+    flex-wrap: wrap; /* Permite que os comentários se movam para a linha seguinte se não houver espaço */
+    gap: 20px; /* Espaço entre os comentários */
+  }
+  
+  .comment {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1 1 200px; /* Faz os comentários ocuparem um tamanho mínimo e se expandirem conforme o espaço */
+    position: relative;
+    max-width: calc(50% - 20px); /* Ajuste a porcentagem conforme necessário */
+  }
+  
+  .comment-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .comment-files a {
+    display: block;
+    margin-top: 5px;
+    text-decoration: underline;
+    color: #333;
+  }
+  
+  /* Ícone de edição */
+  .edit-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #006876;
+  }
+  
+  /* Botão de adicionar comentário com símbolo de + */
+  .comment-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .add-comment-btn {
+    padding: 10px;
+    background-color: #006876;
+    color: white;
+    border: none;
+    cursor: pointer;
     border-radius: 50%;
+    font-size: 24px; /* Tamanho do símbolo + */
+    width: 50px; /* Largura do botão */
+    height: 50px; /* Altura do botão */
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
-
-.add-button a {
-    color: white;
-    font-size: 36px;
-    text-decoration: none;
-    line-height: 1;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .profile-header {
-        padding: 20px;
+    text-align: center;
+  }
+  
+  .add-comment-btn:hover {
+    background-color: #004d60;
+  }
+  
+  /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+    /* Estilos gerais */
+    body {
+      font-size: 16px;
     }
-
-    .profile-header .container {
-        flex-direction: column;
-        align-items: center;
+  
+    .header {
+      flex-direction: column;
+      text-align: center;
+      padding: 10px;
     }
-
-    .profile-pic-container {
-        margin-right: 0;
-        margin-bottom: 20px;
+  
+    .search-bar {
+      width: 100%; /* Ocupa a largura total da tela */
+      margin-right: 0;
+      margin-bottom: 10px;
     }
-
+  
+    .profile-container {
+      flex-direction: column; /* Coloca a imagem de perfil e os detalhes em colunas */
+      text-align: center;
+      margin-left: 0;
+    }
+  
     .profile-pic {
-        width: 150px;
-        height: 150px;
+      width: 150px; /* Reduz o tamanho da imagem de perfil em telas menores */
+      height: 150px;
+      margin-left: 0;
     }
-
-    .profile-header h1 {
-        font-size: 28px;
+  
+    .profile-details {
+      padding: 10px;
     }
-
-    .profile-info {
-        flex-direction: column;
-        align-items: center;
+  
+    .inline-details, .address-dob {
+      flex-direction: column;
     }
-
-    .profile-info span {
-        font-size: 16px;
+  
+    .comment {
+      max-width: 100%; /* Os comentários ocupam toda a largura em telas menores */
     }
-}
+  }
+  
+  @media (max-width: 480px) {
+    /* Ajustes adicionais para telas muito pequenas */
+    .search-bar {
+      width: 90%; /* Deixa um pequeno espaço nas bordas */
+    }
+  
+    .header {
+      padding: 5px;
+    }
+  
+    .profile-name {
+      font-size: 24px; /* Ajusta o tamanho da fonte para telas pequenas */
+    }
+  
+    .profile-container {
+      padding: 10px;
+    }
+  
+    .comment {
+      flex: 1 1 100%; /* Ocupa 100% da largura disponível */
+    }
+  }

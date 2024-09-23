@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('tipo');
             $table->string('nome');
             $table->string('horario');
-            $table->date('dias');
-            $table->date('termino');
-            $table->boolean('status');
+            $table->string('endereco');
+            $table->string('nascimento');
+            $table->string('termino');
+            $table->string('status');
+            $table->binary('foto')->nullable();
             // Add other necessary columns here
             $table->timestamps(); // Adds created_at and updated_at columns
         });

@@ -6,17 +6,20 @@
     <title>Barra de Pesquisa</title>
     <link rel="stylesheet" href="pesquisa.css">
     @vite('resources/css/pesquisa.css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="fundo.webp">
 </head>
 <body>
     <div class="container">
-        <div class="search-container">
-            <div class="search-bar">
-                <span class="icon"><i class="fas fa-search"></i></span>
-                <input type="text" placeholder="Procurar">
+        <form action="{{ route('pesquisa') }}" method="post">
+            @csrf
+            <div class="search-container">
+                <div class="search-bar">
+                    <span class="icon"><i class="fas fa-search"></i></span>
+                    <input type="text" placeholder="Procurar" name="nome">
+                </div>
+                <button class="search-button" type="submit">Buscar</button>
             </div>
-            <button class="search-button">Buscar</button>
-        </div>
+        </form>
     </div>
 </body>
 </html>

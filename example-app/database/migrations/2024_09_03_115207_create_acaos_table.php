@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('acaos', function (Blueprint $table) {
             $table->id();
             $table->boolean('status');
-            $table->date('data');
+            $table->string('data');
             $table->timestamps();
 
             $table->foreignId('atendimentos_id')->constrained();
