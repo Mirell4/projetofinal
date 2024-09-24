@@ -19,7 +19,7 @@ class AlunoSeeder extends Seeder
                 'horario' => 'Manhã',
                 'termino' => '2024-12-20',
                 'status' => 'Ativo',
-                'foto' => base64_encode(file_get_contents('http://localhost:8000/storage/img/unnamed.png'))
+                //'foto' => base64_encode(file_get_contents('http://localhost:8000/storage/img/unnamed.png'))
             ],
             [
                 'tipo' => 'FIC - ADM',
@@ -29,7 +29,7 @@ class AlunoSeeder extends Seeder
                 'horario' => 'Tarde',
                 'termino' => '2024-12-20',
                 'status' => 'Ativo',
-                'foto' => null
+                //'foto' => null
             ],
             [
                 'tipo' => 'Técnico - DS',
@@ -39,7 +39,7 @@ class AlunoSeeder extends Seeder
                 'horario' => 'Integral',
                 'termino' => '2024-12-20',
                 'status' => 'Ativo',
-                'foto' => null
+                //'foto' => null
             ],
             
         ]);
