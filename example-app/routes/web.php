@@ -15,4 +15,8 @@ Route::get('pesquisa', function() {
     return view('pesquisa');
 })->name('pesquisa');
 
-Route::post('pesquisa', [AlunoController::class, 'pesquisarAlunos']);
+Route::post('/pesquisa', [AlunoController::class, 'pesquisarAlunos'])->name('pesquisa');
+
+Route::get('/pesquisa', [AlunoController::class, 'listarAlunos'])->name('listar.alunos');
+
+Route::get('/perfil/{id}', [AlunoController::class, 'perfil'])->name('perfil');

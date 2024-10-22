@@ -1,86 +1,193 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Importação da fonte */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Reset básico */
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    position: relative; /* Necessário para o pseudo-elemento ::before */
-    overflow: hidden; /* Garante que o conteúdo não ultrapasse os limites do body */
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+html, body {
     height: 100%;
-    background-image: url('fundo.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-   
-    
-    z-index: -1; /* Garante que o pseudo-elemento fique atrás do conteúdo */
 }
 
-.container {
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Wrapper Flexível */
+.wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    min-height: 100vh;
 }
 
-.title {
-    color: white;
-    font-size: 48px; /* Fonte grande */
-    font-family: 'Arial Black', sans-serif; /* Fonte chamativa */
-    margin-bottom: 30px; /* Espaço entre o título e a barra de pesquisa */
+/* Container para centralizar conteúdo */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative; /* Para posicionamento absoluto do botão */
 }
 
-.search-container {
+/* Estilização do cabeçalho */
+header {
+    background-color: #2c3e50;
+    padding: 20px 0;
+    color: #ecf0f1;
+}
+
+header .container {
     display: flex;
+    justify-content: center; /* Centraliza horizontalmente os itens */
     align-items: center;
 }
 
+/* Estilização do Botão de Voltar */
+.back-button {
+    position: absolute;
+    left: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 50%;
+    margin-left: -150px;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.back-button .back-icon {
+    width: 24px;
+    height: 24px;
+    stroke: #ecf0f1;
+}
+
+/* Estilização da barra de pesquisa */
 .search-bar {
     display: flex;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 10px; /* Bordas arredondadas em todos os lados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 5px;
-    width: 400px;
-    margin-right: 10px; /* Espaço entre a barra de pesquisa e o botão */
+    width: 100%;
+    max-width: 500px;
 }
 
-.search-bar input {
-    border: none;
-    outline: none;
+.search-bar input[type="text"] {
     flex: 1;
-    padding: 10px;
-    border-radius: 10px; /* Bordas arredondadas em todos os lados */
-    text-align: left;
-}
-
-.search-bar .icon {
-    font-size: 18px;
-    color: #888;
-    margin-left: 10px; /* Espaço entre o ícone e o texto */
-    margin-right: 10px;
-}
-
-.search-button {
+    padding: 10px 15px;
     border: none;
-    background-color: #0096AA; /* Azul */
-    color: white;
-    margin-left: 5px;;
-    padding: 10px 20px;
-    border-radius: 10px; /* Bordas arredondadas em todos os lados */
-    cursor: pointer;
-    font-size: 16px;
+    border-radius: 4px 0 0 4px;
+    font-size: 1em;
+    outline: none;
 }
 
-.search-button:hover {
-    background-color: #094d56; /* Azul mais escuro ao passar o mouse */
+.search-bar button {
+    background-color: #8d9ca7;
+    border: none;
+    padding: 0 20px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar button .icon {
+    width: 20px;
+    height: 20px;
+    stroke: #fff;
+}
+
+.search-bar button:hover {
+    background-color: #2980b9;
+}
+
+/* Estilização dos resultados */
+main {
+    flex: 1; /* Permite que o main expanda para ocupar o espaço disponível */
+    padding: 40px 0;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    margin: 15px;
+    color: #2c3e50;
+}
+
+.card p {
+    margin: 0 15px 15px;
+    color: #7f8c8d;
+}
+
+/* Estilização do rodapé */
+footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 0.9em;
+}
+
+/* Responsividade para Telas Menores */
+@media (max-width: 600px) {
+    .search-bar {
+        width: 100%;
+        max-width: none;
+    }
+
+    .search-bar input[type="text"] {
+        padding: 8px 10px;
+    }
+
+    .search-bar button {
+        padding: 0 15px;
+    }
+
+    .back-button {
+        padding: 8px;
+    }
+
+    .back-button .back-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+a {
+    text-decoration: none; /* Remove o sublinhado dos links */
 }

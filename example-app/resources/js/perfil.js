@@ -1,199 +1,122 @@
-// Função genérica para fechar modais
-function closeModal(modal) {
-    modal.style.display = "none";
-  }
-  
-  // Função para abrir modais
-  function openModal(modal) {
-    modal.style.display = "block";
-  }
-  
-  // Modal de Editar Perfil
-  var editProfileModal = document.getElementById("editProfileModal");
-  var editProfileBtn = document.getElementById("editProfileBtn");
-  var editProfileClose = document.getElementById("editProfileClose");
-  
-  // Abre o modal de editar perfil
-  editProfileBtn.onclick = function() {
-    openModal(editProfileModal);
-  }
-  
-  // Fecha o modal de editar perfil ao clicar no "x"
-  editProfileClose.onclick = function() {
-    closeModal(editProfileModal);
-  }
-  
-  // Salva as alterações do perfil ao submeter o formulário
-  document.getElementById("editProfileForm").onsubmit = function(event) {
-    event.preventDefault();
-  
-    // Obtém os valores dos campos de entrada
-    var newName = document.getElementById("editName").value;
-    var newEmail = document.getElementById("editEmail").value;
-    var newPhone = document.getElementById("editPhone").value;
-    var newCourse = document.getElementById("editCourse").value;
-    var newAddress = document.getElementById("editAddress").value;
-    var newDOB = document.getElementById("editDOB").value;
-  
-    // Atualiza os dados no perfil
-    document.getElementById("displayName").textContent = newName;
-    document.getElementById("displayEmail").textContent = newEmail;
-    document.getElementById("displayPhone").textContent = newPhone;
-    document.getElementById("displayCourse").textContent = newCourse;
-    document.getElementById("displayAddress").textContent = newAddress;
-    document.getElementById("displayDOB").textContent = newDOB;
-  
-    // Fecha o modal após salvar as alterações
-    closeModal(editProfileModal);
-  }
-  
-  // Modal de Adicionar Comentário
-  var commentModal = document.getElementById("commentModal");
-  var addCommentBtn = document.getElementById("addCommentBtn");
-  var commentClose = document.getElementById("commentClose");
-  
-  // Variável para armazenar o comentário em edição
-  var editingComment = null;
-  
-  // Abre o modal de adicionar comentário
+document.addEventListener('DOMContentLoaded', function() {
+  const addCommentBtn = document.getElementById('addCommentBtn');
+  const modal = document.getElementById('commentModal');
+  const closeModal = document.getElementsByClassName('close')[0];
+  const submitComment = document.getElementById('submitComment');
+  const commentsList = document.querySelector('.comments-list');
+  let editingComment = null; // Variável para armazenar o comentário que está sendo editado
+
+  // Abrir o modal
   addCommentBtn.onclick = function() {
-    editingComment = null; // Não está editando nenhum comentário
-    openModal(commentModal);
-    // Limpa o formulário ao abrir o modal
-    document.getElementById("addCommentForm").reset();
-    document.getElementById("commentText").removeAttribute("readonly");
+      editingComment = null; // Resetar quando estamos criando um novo comentário
+      clearModalFields(); // Limpar campos do modal
+      modal.style.display = 'block';
   }
-  
-  // Fecha o modal de adicionar comentário ao clicar no "x"
-  commentClose.onclick = function() {
-    closeModal(commentModal);
+
+  // Fechar o modal
+  closeModal.onclick = function() {
+      modal.style.display = 'none';
   }
-  
-  // Adiciona ou edita um comentário ao submeter o formulário
-  document.getElementById("addCommentForm").onsubmit = function(event) {
-    event.preventDefault();
-  
-    var commentTitle = document.getElementById("commentTitle").value;
-    var commentText = document.getElementById("commentText").value;
-    var commentFiles = document.getElementById("commentFiles").files;
-  
-    if (commentTitle.trim() === "" || commentText.trim() === "") return; // Não adiciona comentários vazios
-  
-    if (editingComment) {
-      // Atualiza o comentário existente
-      editingComment.querySelector(".comment-title").textContent = commentTitle;
-      editingComment.querySelector(".comment-text").textContent = commentText;
-  
-      // Atualiza os arquivos anexados
-      var filesList = editingComment.querySelector(".comment-files");
-      if (filesList) {
-        filesList.innerHTML = ""; // Limpa arquivos antigos
-      } else {
-        filesList = document.createElement("div");
-        filesList.classList.add("comment-files");
-        editingComment.appendChild(filesList);
-      }
-  
-      // Mantém arquivos antigos e adiciona novos
-      var existingFiles = Array.from(editingComment.querySelectorAll(".comment-files a")).map(link => link.textContent);
-      if (commentFiles.length > 0) {
-        for (var i = 0; i < commentFiles.length; i++) {
-          var fileLink = document.createElement("a");
-          fileLink.href = URL.createObjectURL(commentFiles[i]);
-          fileLink.textContent = commentFiles[i].name;
-          fileLink.target = "_blank"; // Abre o arquivo em uma nova aba
-          if (!existingFiles.includes(commentFiles[i].name)) {
-            filesList.appendChild(fileLink);
-            filesList.appendChild(document.createElement("br")); // Adiciona uma quebra de linha entre os links
-          }
-        }
-      }
-  
-      closeModal(commentModal);
-      return;
-    }
-  
-    // Cria o novo comentário
-    var newComment = document.createElement("div");
-    newComment.classList.add("comment");
-  
-    var titleElement = document.createElement("div");
-    titleElement.classList.add("comment-title");
-    titleElement.textContent = commentTitle;
-    newComment.appendChild(titleElement);
-  
-    var textElement = document.createElement("p");
-    textElement.classList.add("comment-text");
-    textElement.textContent = commentText;
-    newComment.appendChild(textElement);
-  
-    // Exibe os arquivos anexados como links para download/abertura
-    if (commentFiles.length > 0) {
-      var filesList = document.createElement("div");
-      filesList.classList.add("comment-files");
-      for (var i = 0; i < commentFiles.length; i++) {
-        var fileLink = document.createElement("a");
-        fileLink.href = URL.createObjectURL(commentFiles[i]);
-        fileLink.textContent = commentFiles[i].name;
-        fileLink.target = "_blank"; // Abre o arquivo em uma nova aba
-        filesList.appendChild(fileLink);
-        filesList.appendChild(document.createElement("br")); // Adiciona uma quebra de linha entre os links
-      }
-      newComment.appendChild(filesList);
-    }
-  
-    // Adiciona o ícone de lápis para edição
-    var editIcon = document.createElement("span");
-    editIcon.classList.add("edit-icon");
-    editIcon.textContent = "✎"; // Ícone de lápis
-    editIcon.onclick = function() {
-      // Ao clicar no ícone, abre o modal com o conteúdo do comentário
-      document.getElementById("commentTitle").value = titleElement.textContent;
-      document.getElementById("commentText").value = textElement.textContent;
-      document.getElementById("commentFiles").value = ""; // Não é possível editar arquivos no modal atual
-      document.getElementById("commentText").removeAttribute("readonly");
-      openModal(commentModal);
-      
-      // Define o comentário como sendo o que está sendo editado
-      editingComment = newComment;
-    };
-    newComment.appendChild(editIcon);
-  
-    // Adiciona o comentário à área de comentários
-    document.getElementById("commentsArea").appendChild(newComment);
-  
-    // Fecha o modal após adicionar o comentário
-    closeModal(commentModal);
-  }
-  
-  // Fecha os modais ao clicar fora deles
+
+  // Fechar o modal se clicar fora
   window.onclick = function(event) {
-    if (event.target === commentModal) {
-      closeModal(commentModal);
-    }
-    if (event.target === editProfileModal) {
-      closeModal(editProfileModal);
-    }
-  }
-  
-  // Obtém o elemento da foto de perfil e o input de arquivo
-  var profilePic = document.querySelector(".profile-pic");
-  var profilePicInput = document.getElementById("profilePicInput");
-  
-  // Função para lidar com a seleção de um novo arquivo de imagem
-  profilePic.onclick = function() {
-    profilePicInput.click(); // Abre o seletor de arquivos ao clicar na foto de perfil
-  };
-  
-  // Função para atualizar a foto de perfil quando um novo arquivo é selecionado
-  profilePicInput.onchange = function() {
-    if (profilePicInput.files && profilePicInput.files[0]) {
-      var reader = new FileReader();
-      
-      reader.onload = function(e) {
-        profilePic.src = e.target.result; // Atualiza o src da foto de perfil
+      if (event.target == modal) {
+          modal.style.display = 'none';
       }
-      
-      reader.readAsDataURL(profilePicInput.files[0]); // Lê o arquivo selecionado
-    }
-  };
+  }
+
+  // Função para adicionar ou editar um comentário
+  submitComment.onclick = function() {
+      const title = document.getElementById('commentTitle').value;
+      const text = document.getElementById('commentText').value;
+      const status = document.getElementById('commentStatus').value;
+      const fileInput = document.getElementById('fileUpload');
+      const file = fileInput.files[0];  // Pega o primeiro arquivo selecionado
+
+      if (title && text) {
+          let comment;
+
+          if (editingComment) {
+              // Editar um comentário existente
+              comment = editingComment;
+              comment.innerHTML = ''; // Limpa o conteúdo anterior
+          } else {
+              // Criar um novo comentário
+              comment = document.createElement('div');
+              comment.classList.add('comment');
+              commentsList.appendChild(comment);
+          }
+
+          // Criar o container para o texto e bolinha de status
+          const statusContainer = document.createElement('div');
+          statusContainer.classList.add('status-container');
+
+          const statusText = document.createElement('span');
+          statusText.classList.add('status-text');
+          statusText.textContent = status;
+
+          const statusIndicator = document.createElement('div');
+          statusIndicator.classList.add('comment-status');
+
+          if (status === 'Ativo') {
+              statusIndicator.classList.add('ativo');
+          } else if (status === 'Inativo') {
+              statusIndicator.classList.add('inativo');
+          } else if (status === 'Pendente') {
+              statusIndicator.classList.add('pendente');
+          }
+
+          // Adicionar o texto e bolinha ao container
+          statusContainer.appendChild(statusText);
+          statusContainer.appendChild(statusIndicator);
+
+          // Inserir o comentário
+          comment.innerHTML = `<h4>${title}</h4><p>${text}</p>`;
+
+          // Verifica se há um arquivo selecionado
+          if (file) {
+              const fileLink = document.createElement('a');
+              fileLink.textContent = `Arquivo: ${file.name}`;
+              fileLink.href = URL.createObjectURL(file); // Cria um link para o arquivo
+              fileLink.download = file.name;  // Força o download do arquivo ao clicar
+              comment.appendChild(fileLink);  // Adiciona o link ao comentário
+          }
+
+          comment.appendChild(statusContainer);
+
+          // Limpar o modal
+          clearModalFields();
+          modal.style.display = 'none';
+      } else {
+          alert('Preencha o título e o comentário!');
+      }
+  }
+
+  // Função para limpar os campos do modal
+  function clearModalFields() {
+      document.getElementById('commentTitle').value = '';
+      document.getElementById('commentText').value = '';
+      document.getElementById('fileUpload').value = '';  // Limpa o campo de arquivo
+      document.getElementById('commentStatus').value = 'Ativo';
+  }
+
+  // Evento para abrir o modal de edição ao clicar em um comentário
+  commentsList.addEventListener('click', function(event) {
+      if (event.target.closest('.comment')) {
+          const comment = event.target.closest('.comment');
+          editingComment = comment; // Armazenar o comentário atual para edição
+
+          // Preencher o modal com os dados do comentário
+          const title = comment.querySelector('h4').textContent;
+          const text = comment.querySelector('p').textContent;
+          const statusText = comment.querySelector('.status-text').textContent;
+
+          document.getElementById('commentTitle').value = title;
+          document.getElementById('commentText').value = text;
+          document.getElementById('commentStatus').value = statusText;
+
+          // Abrir o modal
+          modal.style.display = 'block';
+      }
+  });
+});

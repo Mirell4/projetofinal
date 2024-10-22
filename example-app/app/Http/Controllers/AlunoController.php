@@ -29,12 +29,39 @@ class AlunoController extends Controller
      * Pesquisar alunos pelo nome.
      */
     public function pesquisarAlunos(Request $request)
-    {
-        $nome = $request->input('nome');
+{
+    $request->validate([
+        'search' => 'required|string|max:255',
+    ]);
 
-        // Search for students whose name contains the provided substring
-        $alunos = Aluno::where('nome', 'like', '%'.$nome.'%')->get();
+    $nome = $request->input('search');
+    $palavras = explode(' ', $nome);
+    $query = Aluno::query();
 
-        return view('perfil', compact('alunos'));
+    foreach ($palavras as $palavra) {
+        $query->where('nome', 'like', '%' . $palavra . '%');
     }
+
+    $alunos = $query->get();
+
+    return view('pesquisa', compact('alunos'));
+}
+
+
+
+    public function listarAlunos()
+    {
+        $alunos = Aluno::all(); // Busca todos os alunos no banco de dados
+        return view('pesquisa', compact('alunos')); // Passa a lista de alunos para a view
+    }
+
+
+    public function perfil($id)
+    {
+        $aluno = Aluno::findOrFail($id); // Busca o aluno pelo ID
+        return view('perfil', compact('aluno')); // Passa a variável para a view
+    }
+
+
+    
 }

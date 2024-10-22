@@ -19,7 +19,10 @@ class AlunoSeeder extends Seeder
                 'horario' => 'Manhã',
                 'termino' => '2024-12-20',
                 'status' => 'Ativo',
-                //'foto' => base64_encode(file_get_contents('http://localhost:8000/storage/img/unnamed.png'))
+                'inicio' => '2022-12-20',
+                'rg' => '202.222.22-2',
+                'cpf' => '2022233',
+                'foto' => 'storage/img/unnamed.png',
             ],
             [
                 'tipo' => 'FIC - ADM',
@@ -29,7 +32,23 @@ class AlunoSeeder extends Seeder
                 'horario' => 'Tarde',
                 'termino' => '2024-12-20',
                 'status' => 'Ativo',
-                //'foto' => null
+                'inicio' => '2022-12-20',
+                'rg' => '202.222.22-2',
+                'cpf' => '2022233',
+                'foto' => 'storage/img/unnamed.png',
+            ],
+            [
+                'tipo' => 'FIC - ADM',
+                'nome' => 'Raiam Santos',
+                'endereco' => 'Rua prado, 123',
+                'nascimento' => '21/10/2006',
+                'horario' => 'Tarde',
+                'termino' => '2024-12-20',
+                'status' => 'Ativo',
+                'inicio' => '2022-12-20',
+                'rg' => '202.23232.22-2',
+                'cpf' => '02932838387',
+                'foto' => 'storage/img/unnamed.png',
             ],
             [
                 'tipo' => 'Técnico - DS',
@@ -39,7 +58,10 @@ class AlunoSeeder extends Seeder
                 'horario' => 'Integral',
                 'termino' => '2024-12-20',
                 'status' => 'Ativo',
-                //'foto' => null
+                'inicio' => '2022-12-20',
+                'rg' => '202.222.22-2',
+                'cpf' => '2022233',
+                'foto' => 'storage/img/unnamed.png',
             ],
             
         ]);

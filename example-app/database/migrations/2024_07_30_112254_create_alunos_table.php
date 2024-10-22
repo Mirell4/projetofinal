@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('horario');
             $table->string('endereco');
             $table->string('nascimento');
+            $table->string('cpf');
+            $table->string('rg');
+            $table->string('inicio');
             $table->string('termino');
             $table->string('status');
             $table->binary('foto')->nullable();

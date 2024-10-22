@@ -30,6 +30,12 @@ class ContatoSeeder extends Seeder
                 'telefone' => '9876453221',
                 'aluno_id' => '3',
             ],
+            [
+                'responsavel' => '(78) 98765467',
+                'email' => 'santos@exemplo.com',
+                'telefone' => '0987654321',
+                'aluno_id' => '4',
+            ],
             
         ]);
     }
