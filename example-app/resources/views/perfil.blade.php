@@ -22,13 +22,13 @@
             </button>            
   
             <div class="profile-pic">
-                <img src="pessoa1.jpg" alt="Foto do Perfil">
+                <img src="{{ asset($aluno->foto) }}" alt="{{ $aluno->nome }}">
             </div>
             <div class="info">
                 <h1>{{ $aluno->nome }}</h1>
-                <p>Profissão: {{ $aluno->profissao ?? 'Não disponível' }}</p>
             </div>
         </div>
+        
     </header>
 
     <main>   

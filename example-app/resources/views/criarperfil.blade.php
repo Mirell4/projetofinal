@@ -1,112 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="criarperfil.css">
-    @vite('resources/css/criarperfil.css')
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <title>Formulário de Inscrição</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        h2 {
-            color: #006876;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        form {
-            background-color: white;
-            padding: 20px;
-            max-width: 500px;
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="date"],
-        input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="tel"]:focus,
-        input[type="date"]:focus,
-        input[type="file"]:focus {
-            border-color: #006876;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 104, 118, 0.3);
-        }
-
-        input[type="submit"] {
-            background-color: #006876;
-            color: white;
-            padding: 12px;
-            width: 100%;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #005060;
-        }
-    </style>
+    @vite('resources/css/criarperfil.css')
+    <link rel="stylesheet" href="criarperfil.css">
 </head>
 <body>
-    <h2>Formulário de Inscrição</h2>
-    <form action="/enviar" method="post" enctype="multipart/form-data">
-        <label for="foto_perfil">Foto de Perfil:</label>
-        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" required>
+    
+    <div class="container">
+        <div class="profile-container">
+            <div class="image-container">
+                <input type="file" id="foto" name="foto" accept="image/*" required>
+                <label for="foto" class="upload-label">
+                    <img id="profile-pic" src="default-image.jpg" alt="Foto de Perfil">
+                </label>
+            </div>
+            <div class="name-container">
+                <h2>Nome:</h2>
+                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+            </div>
+        </div>
 
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
+        
+        <div class="info-container">
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
 
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
+                <label for="telefone">Telefone do Responsável:</label>
+                <input type="tel" id="telefone" name="telefone" required>
 
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required>
+                <label for="docente">Nome do Docente:</label>
+                <input type="text" id="docente" name="docente" required>
 
-        <label for="curso">Curso:</label>
-        <input type="text" id="curso" name="curso" required>
+                <label for="inicio">Início do Curso:</label>
+                <input type="date" id="inicio" name="inicio" required>
 
-        <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" name="endereco" required>
+                <label for="termino">Término do Curso:</label>
+                <input type="date" id="termino" name="termino" required>
 
-        <label for="data_nascimento">Data de Nascimento:</label>
-        <input type="date" id="data_nascimento" name="data_nascimento" required>
+                <label for="curso">Curso:</label>
+                <input type="text" id="curso" name="curso" required>
 
-        <input type="submit" value="Enviar">
-    </form>
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required>
+
+                <!-- Campos adicionados -->
+                <label for="telefone-pessoal">Telefone Pessoal:</label>
+                <input type="tel" id="telefone-pessoal" name="telefone-pessoal" required>
+
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg" required>
+
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" required>
+
+                <label for="nascimento">Data de Nascimento:</label>
+                <input type="date" id="nascimento" name="nascimento" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    
+    
+    <script>
+        // Script para alterar a imagem de perfil
+        document.getElementById('foto').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profile-pic').src = e.target.result;
+            };
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Permite que a imagem clique para abrir o seletor de arquivo
+        document.querySelector('.upload-label').addEventListener('click', function() {
+            document.getElementById('foto').click();
+        });
+    </script>
+
 </body>
 </html>

@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('atendimentos', function (Blueprint $table) {
             $table->id(); 
             $table->string('data');
+            $table->string('título');
+            $table->string('comentário');
+            $table->binary('arquivo')->nullable();
+            $table->enum('status', ['Ativo', 'Inativo', 'Pendente']);
             $table->timestamps();
 
 

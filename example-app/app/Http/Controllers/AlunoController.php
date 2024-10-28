@@ -25,6 +25,7 @@ class AlunoController extends Controller
         return response()->json(['message' => 'Alunos fictícios inseridos com sucesso']);
     }
 
+
     /**
      * Pesquisar alunos pelo nome.
      */
@@ -46,6 +47,7 @@ class AlunoController extends Controller
 
     return view('pesquisa', compact('alunos'));
 }
+
 
 
 

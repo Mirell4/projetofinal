@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('dados-saude', 'DadosSaudeController');
 // outras rotas necessárias
 
+Route::get('criar', function() {
+    return view('criarperfil');
+})->name('criar');
+
 Route::get('perfil', function() {
     return view('perfil');
 });
