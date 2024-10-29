@@ -117,7 +117,7 @@
 </div>
 
     <footer>
-        <p>&copy; 2024 Seu Nome. Todos os direitos reservados.</p>
+        <p>&copy; 2024 GestClass. Todos os direitos reservados.</p>
     </footer>
 
     <script src="perfil.js"></script>

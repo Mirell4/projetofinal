@@ -191,3 +191,32 @@ footer p {
 a {
     text-decoration: none; /* Remove o sublinhado dos links */
 }
+
+.user-menu {
+    position: absolute; /* Torna o menu posicionado em relação ao contêiner pai */
+    right: 20px; /* Ajuste a distância do canto direito */
+    top: 7px; /* Ajuste a distância do topo */
+}
+
+.user-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.user-menu li {
+    margin-left: 20px;
+}
+
+.user-menu a {
+    text-decoration: none;
+    color: white; /* Muda a cor do texto para branco */
+    padding: 10px;
+}
+
+.user-menu a:hover {
+    color: #485460; /* Altera a cor ao passar o mouse */
+}
+
+
