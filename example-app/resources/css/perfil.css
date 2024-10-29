@@ -35,7 +35,7 @@ header {
 }
 
 .info h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Arial', serif;
   font-size: 2.5em;
 }
 
@@ -59,7 +59,7 @@ section {
 }
 
 h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Arial', serif;
   font-size: 2em;
   margin-bottom: 20px;
   text-align: center;
@@ -109,6 +109,19 @@ footer {
   position: relative;
 
 }
+
+/*card*/
+.card-coment{
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: calc(33.333% - 20px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+}
+
 
 .comment h4 {
   margin-bottom: 10px;
@@ -306,4 +319,5 @@ button#submitComment:hover {
   height: 24px;
   stroke: #ecf0f1;
 }
+
 

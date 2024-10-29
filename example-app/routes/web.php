@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\AtendimentoSaudeController;
 use Illuminate\Support\Facades\Route;
 
 // Route::resource('alunos', 'AlunoController');
@@ -24,3 +25,6 @@ Route::post('/pesquisa', [AlunoController::class, 'pesquisarAlunos'])->name('pes
 Route::get('/pesquisa', [AlunoController::class, 'listarAlunos'])->name('listar.alunos');
 
 Route::get('/perfil/{id}', [AlunoController::class, 'perfil'])->name('perfil');
+Route::post('/perfil/{id}', [AtendimentoSaudeController::class, 'store']);
+
+Route::post('/atendimentos', [AtendimentoSaudeController::class, 'store'])->name('atendimentos.store');

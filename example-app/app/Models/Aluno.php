@@ -13,4 +13,8 @@ class Aluno extends Model
     public function contatos(){
         return $this->hasMany(contato::class);
     }
+
+    public function atendimentos(){
+        return $this->hasMany(atendimento::class);
+    }
 }

@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('atendimentos', function (Blueprint $table) {
             $table->id(); 
-            $table->string('data');
-            $table->string('título');
-            $table->string('comentário');
+            $table->string('titulo');
+            $table->string('comentario');
             $table->binary('arquivo')->nullable();
             $table->enum('status', ['Ativo', 'Inativo', 'Pendente']);
             $table->timestamps();
 
 
             $table->foreignId('aluno_id')->constrained();
-            $table->foreignId('docentes_id')->constrained();
+        
         });
     }
 

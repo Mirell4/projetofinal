@@ -51,9 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
           const statusContainer = document.createElement('div');
           statusContainer.classList.add('status-container');
 
+
+          
           const statusText = document.createElement('span');
           statusText.classList.add('status-text');
           statusText.textContent = status;
+
+        //   <span class="status-text">{{ $atendimento->status }}</span>
 
           const statusIndicator = document.createElement('div');
           statusIndicator.classList.add('comment-status');
