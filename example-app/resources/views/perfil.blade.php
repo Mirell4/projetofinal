@@ -79,16 +79,29 @@
     <h2>Comentários</h2>
         <div class="comments-list">
             @foreach ($aluno->atendimentos as $atendimento)
-            <div class="card-coment">
+            <div class="card-coment comment">
                 <h3 class="titu">{{ $atendimento->titulo }}</h3>
                 <p class="coment">{{ $atendimento->comentario }}</p>
                 <a href="{{ asset('storage/' . $atendimento->arquivo) }}" download="anexo.docx">Atendimento</a>
                 </br>
-                <span class="status-text">{{ $atendimento->status }}</span>
+                
+                <div class="status-container">
+                    <span class="status-text">{{ $atendimento->status }}</span>
+                </div>
             </div> 
+
+            
             @endforeach  
         </div>
-    <button id="addCommentBtn" class="add-comment-btn">+</button>
+<!-- Botão de + -->
+<button class="add-comment-btn" id="addCommentBtn">+</button>
+
+<!-- Menu de opções -->
+<div class="options-menu" id="optionsMenu">
+  <button class="option-btn" id="openCommentModal">Comentários</button>
+  <button class="option-btn" id="openEditModal">Editar</button>
+</div>
+
 </section>
 
 

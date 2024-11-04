@@ -124,3 +124,36 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const addCommentBtn = document.getElementById('addCommentBtn');
+    const optionsMenu = document.getElementById('optionsMenu');
+    const openCommentModal = document.getElementById('openCommentModal');
+    const openEditModal = document.getElementById('openEditModal');
+  
+    // Mostrar ou ocultar o menu de opções ao clicar no botão de "+"
+    addCommentBtn.onclick = function() {
+      optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
+    };
+  
+    // Abrir o modal de comentários
+    openCommentModal.onclick = function() {
+      optionsMenu.style.display = 'none';
+      document.getElementById('commentModal').style.display = 'block';
+    };
+  
+    // Abrir o modal de edição (implementar conforme necessário)
+    openEditModal.onclick = function() {
+      optionsMenu.style.display = 'none';
+      // Exibir o modal de edição aqui
+      alert('Função de edição ainda não implementada');
+    };
+  
+    // Fechar o menu de opções se clicar fora
+    window.onclick = function(event) {
+      if (event.target !== addCommentBtn && !optionsMenu.contains(event.target)) {
+        optionsMenu.style.display = 'none';
+      }
+    };
+  });
+  
