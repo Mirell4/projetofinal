@@ -14,4 +14,8 @@ class atendimento extends Model
     public function aluno(){
         return $this->belongsTo(Aluno::class);
     }
+
+    protected $casts = [
+        'status' => 'string',
+    ];
 }

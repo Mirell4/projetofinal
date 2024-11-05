@@ -14,7 +14,7 @@ class AtendimentoSaudeController extends Controller
             'titulo' => 'required|string|max:255',
             'comentario' => 'required|string',
             'status' => 'required|string|in:Ativo,Inativo,Pendente',
-            'arquivo' => 'nullable|file|mimes:jpg,png,pdf,docx|max:2048', // Validação do arquivo
+            'arquivo' => 'nullable|file|mimes:jpg,png,pdf,docx,txt|max:2048', // Validação do arquivo
         ]);
 
         // Salvar o arquivo, se houver

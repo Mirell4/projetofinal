@@ -88,14 +88,15 @@ footer {
   width: 100%;
   padding: 20px;
   background-color: #f1f1f1;
+  box-sizing: border-box; /* Garantir que o padding não afete a largura */
 }
 
 /* Estilo da lista de comentários */
 .comments-list {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: space-between; /* Garantir espaçamento adequado entre os cards */
 }
 
 /* Estilo de cada comentário */
@@ -107,28 +108,47 @@ footer {
   width: calc(33.333% - 20px);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
-
+  transition: transform 0.2s ease-in-out; /* Adicionar uma animação ao passar o mouse */
 }
 
-/*card*/
-.card-coment{
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  width: calc(33.333% - 20px);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-
+/* Efeito de hover para os comentários */
+.comment:hover {
+  transform: translateY(-5px); /* Levantar o card ao passar o mouse */
 }
 
-
-.comment h4 {
+/* Título do atendimento */
+.comment h3 {
   margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
 }
 
+/* Comentário */
 .comment p {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: #555;
+}
+
+/* Link de download do arquivo */
+.comment a {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.comment a:hover {
+  background-color: #2980b9; /* Mudar cor ao passar o mouse */
+}
+
+.comment a:active {
+  background-color: #1c6e8c; /* Cor mais escura para o clique */
 }
 
 /* Container para o texto e a bolinha de status */
@@ -140,33 +160,50 @@ footer {
   right: 10px;
 }
 
-/* Estilo do texto do status */
-.status-text {
-  margin-right: 10px;
-  font-size: 1em;
-  font-weight: bold;
-}
 
 /* Estilo das bolinhas de status */
 .comment-status {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  border: 2px solid #ccc; /* Borda ao redor da bolinha */
+  border: 2px solid #ccc;
+  margin-left: 5px; /* Espaçamento entre o status e o texto */
+  display: inline-block; /* Certifique-se de que as bolinhas são exibidas corretamente */
+  transition: all 0.3s ease; /* Suaviza a transição para hover/foco */
 }
 
+/* Cores de status */
 .comment-status.ativo {
   background-color: #3498db; /* Azul para Ativo */
 }
 
 .comment-status.inativo {
-  background-color: #fff; /* Branco para Inativo */
+  background-color: #fff ; /* Branco para Inativo */
   border: 2px solid #ccc; /* Borda cinza para visualização */
 }
 
 .comment-status.pendente {
   background-color: #e74c3c; /* Vermelho para Pendente */
 }
+
+.comment-status.sem-status {
+  background-color: #0b82d2; /* Azul para status desconhecido */
+  border: 2px solid #ccc; /* Borda cinza */
+}
+
+/* Efeitos de hover para interatividade */
+.comment-status:hover {
+  transform: scale(1.2); /* Aumenta o tamanho da bolinha quando o mouse passa sobre */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Sombra leve para dar um efeito de destaque */
+}
+
+/* Foco, importante para acessibilidade */
+.comment-status:focus {
+  outline: none; /* Remove o outline padrão */
+  box-shadow: 0 0 4px rgba(0, 0, 255, 0.6); /* Um destaque azul no foco */
+}
+
+
 
 /* Estilos do modal */
 .modal {
