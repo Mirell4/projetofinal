@@ -155,5 +155,26 @@ document.addEventListener('DOMContentLoaded', function() {
         optionsMenu.style.display = 'none';
       }
     };
+    // perfil.js
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const alertBox = document.getElementById('successAlert');
+        if (alertBox) {
+            // Inicia o desaparecimento após 3 segundos
+            setTimeout(() => {
+                alertBox.classList.add('fade-out'); // Adiciona a classe de opacidade
+            }, 3000); // 3000 ms = 3 segundos
+
+            // Remove o alerta do DOM após a transição de opacidade
+            alertBox.addEventListener('transitionend', () => {
+                alertBox.remove();
+            });
+        }
+    });
+
+
+
+
   });
+  
   

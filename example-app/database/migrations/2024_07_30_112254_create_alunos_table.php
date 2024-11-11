@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('rg');
             $table->string('inicio');
             $table->string('termino');
-            $table->string('status');
             $table->binary('foto')->nullable();
             // Add other necessary columns here
             $table->timestamps(); // Adds created_at and updated_at columns

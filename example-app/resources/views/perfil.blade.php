@@ -8,11 +8,21 @@
     <link rel="stylesheet" href="perfil.css">
     @vite('resources/css/perfil.css')
     @vite('resources/js/perfil.js')
-
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <header>
+
+    @if(session('success'))
+    <div id="successAlert" class="alert alert-success">
+        
+        {{ session('success') }}
+        <button class="close-btn" onclick="this.parentElement.style.display='none';">×</button>
+    </div>
+@endif
+
+
         <div class="container">
             <!-- Botão de Voltar -->
             <button class="back-button" onclick="history.back()" aria-label="Voltar">
@@ -31,7 +41,8 @@
         
     </header>
 
-    <main>   
+    <main>  
+
         <div class="container flex-container">
             <section class="personal-info">
                 <h2>Informações Pessoais</h2>

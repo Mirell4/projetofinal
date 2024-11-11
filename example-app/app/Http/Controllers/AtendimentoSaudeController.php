@@ -29,7 +29,7 @@ class AtendimentoSaudeController extends Controller
         Atendimento::create($validatedData);
 
         // Retornar uma resposta (pode ser um redirecionamento ou um JSON)
-        return response()->json(['message' => 'Comentário salvo com sucesso!'], 201);
+        return redirect()->back()->with('success', 'Comentário salvo com sucesso!');
     }
 }
 
