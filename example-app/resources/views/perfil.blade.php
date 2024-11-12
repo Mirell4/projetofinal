@@ -81,6 +81,9 @@
                     <li><strong>Curso:</strong> {{ $aluno->tipo }}</li>
                     <li><strong>Data de Início:</strong> {{ $aluno->inicio }}</li>
                     <li><strong>Data de Término:</strong> {{ $aluno->termino }}</li>
+                    <li><strong>Período:</strong> {{ $aluno->horario }}</li>
+                
+                    </li>
                 </ul>
             </section>
         </div>

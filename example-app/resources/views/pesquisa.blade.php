@@ -20,6 +20,28 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
+
+                             <!-- Menu Hamburguer -->
+<div class="menu-container">
+    <button class="menu-button" onclick="toggleMenu()">
+        <div class="menu-icon"></div>
+        <div class="menu-icon"></div>
+        <div class="menu-icon"></div>
+    </button>
+
+    <!-- Menu Dropdown -->
+    <div class="menu" id="menu">
+        <ul>
+            <!-- Link para o Dashboard -->
+            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+
+            <!-- Link para a Página Inicial (Sair) -->
+            <li><a href="{{ route('inicio') }}">Sair</a></li>
+        </ul>
+    </div>
+</div>
+
+
                 
                 <!-- Barra de Pesquisa Centralizada -->
                 @if($alunos->isNotEmpty())
@@ -75,6 +97,13 @@
             </div>
         </footer>
     </div>
+    <script>
+        // Função para alternar o menu
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('open');
+        }
+    </script>
 </body>
 
 </html>

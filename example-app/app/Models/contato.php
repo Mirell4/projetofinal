@@ -9,6 +9,13 @@ class contato extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'aluno_id',
+        'email',
+        'telefone',
+        'responsavel',
+    ];    
+
     public function aluno(){
         return $this->belongsTo(Aluno::class);
     }

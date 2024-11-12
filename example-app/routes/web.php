@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\AtendimentoSaudeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 // Route::resource('alunos', 'AlunoController');
@@ -36,6 +38,31 @@ Route::get('/formulario-cadastro', [AlunoController::class, 'create'])->name('fo
 
 // Rota para armazenar o aluno (POST)
 Route::post('/alunos/store', [AlunoController::class, 'store'])->name('alunos.store');
+
+// Rota para a página de início
+Route::get('/inicio', [PageController::class, 'inicio'])->name('inicio');
+
+// Rota para a página do Dashboard
+Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+
+// login 
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+
+// foto
+Route::get('/foto/{id}', [AlunoController::class, 'capturarFoto'])->name('foto');
+
+Route::post('/foto/salvar/{id}', [AlunoController::class, 'salvarFoto'])->name('salvar.foto');
+
+
+
+
+
+
+
+
+
+
+
 
 
 

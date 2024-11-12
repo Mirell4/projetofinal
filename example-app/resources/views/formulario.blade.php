@@ -113,7 +113,7 @@
                 </div>
 
                 <div class="continue-button">
-                    <button type="submit">Enviar Cadastro</button>
+                    <button type="submit">Continue</button>
                 </div>
             </form>
         </div>

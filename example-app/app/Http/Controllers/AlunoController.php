@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Aluno; // Assuming Aluno model is located in App\Models namespace
+use App\Models\contato;
+use App\Models\Aluno; 
 
 class AlunoController extends Controller
 {
@@ -63,33 +64,55 @@ class AlunoController extends Controller
             'tipo' => 'required|string|max:250',
             'inicio' => 'required|date',
             'termino' => 'required|date',
-            
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
-       
-
-        // Criação do aluno
-        Aluno::create([
+        // Criação do aluno na tabela alunos
+        $aluno = Aluno::create([
             'nome' => $validatedData['nome'],
-            'email' => $validatedData['email'],
-            'telefone' => $validatedData['telefone'],
             'rg' => $validatedData['rg'],
             'cpf' => $validatedData['cpf'],
             'endereco' => $validatedData['endereco'],
             'nascimento' => $validatedData['nascimento'],
             'horario' => $validatedData['horario'],
-            'responsavel' => $validatedData['responsavel'],
             'tipo' => $validatedData['tipo'],
             'inicio' => $validatedData['inicio'],
             'termino' => $validatedData['termino'],
-            
+            //'foto' => $validatedData['foto'],
         ]);
 
-        // Redireciona com mensagem de sucesso
-        return response()->json([
-            'success' => true,
-            'message' => 'Aluno cadastrado com sucesso!',
-        ], 200);
+        // Criação dos contatos na tabela contatos, associando ao aluno
+        Contato::create([
+            'aluno_id' => $aluno->id,
+            'email' => $validatedData['email'],
+            'telefone' => $validatedData['telefone'],
+            'responsavel' => $validatedData['responsavel'],
+        ]);
+
+        // Redireciona para a página de captura de foto
+        return redirect()->route('foto', ['id' => $aluno->id])->with('success', 'Aluno cadastrado com sucesso!');
     }
 
-};
+    // Método para exibir a página de captura de foto
+    public function capturarFoto($id)
+    {
+        $aluno = Aluno::findOrFail($id); // Busca o aluno pelo ID
+        return view('foto', compact('aluno')); // Passa o aluno para a view
+    }
+
+
+    public function salvarFoto(Request $request, $id)
+    {
+    $aluno = Aluno::findOrFail($id);
+
+    if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+        $path = $request->file('foto')->store('fotos', 'public'); // Armazena a foto no disco público
+
+        $aluno->foto = $path; // Salva o caminho no banco de dados
+        $aluno->save();
+    }
+
+    return redirect()->route('perfil', ['id' => $aluno->id])->with('success', 'Foto salva com sucesso!');
+}
+
+}

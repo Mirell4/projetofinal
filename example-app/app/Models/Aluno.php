@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Aluno extends Model
 {
     protected $fillable = ['nome', 'nascimento', 'informacoes_contato', 'tipo', 'horario', 
-    'rg', 'cpf', 'endereco',  'inicio', 'termino',];
+    'rg', 'cpf', 'endereco',  'inicio', 'termino','foto'];
 
     // outras relações e métodos
     public function contatos(){
