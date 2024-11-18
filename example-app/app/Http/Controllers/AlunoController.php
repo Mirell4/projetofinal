@@ -40,7 +40,7 @@ class AlunoController extends Controller
         $aluno = Aluno::findOrFail($id); // Busca o aluno pelo ID
         return view('perfil', compact('aluno')); // Passa a variável para a view
     }
-
+    
 
 
     /* Criar aluno */
@@ -102,17 +102,28 @@ class AlunoController extends Controller
 
 
     public function salvarFoto(Request $request, $id)
-    {
+{
+    // Encontra o aluno pelo ID ou retorna 404 caso não seja encontrado
     $aluno = Aluno::findOrFail($id);
 
+    // Verifica se o arquivo foi enviado e se é válido
     if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-        $path = $request->file('foto')->store('fotos', 'public'); // Armazena a foto no disco público
+        // Armazena a foto no disco 'public', dentro da pasta 'img'
+        $path = $request->file('foto')->store('img', 'public');
 
-        $aluno->foto = $path; // Salva o caminho no banco de dados
+        // Atualiza o campo 'foto' do aluno com o caminho relativo da foto
+        $aluno->foto = $path;
+
+        // Salva as alterações no banco de dados
         $aluno->save();
+    } else {
+        // Caso o arquivo não seja válido ou não tenha sido enviado, você pode retornar uma resposta de erro.
+        return response()->json(['error' => 'Foto inválida ou não enviada.'], 400);
     }
 
-    return redirect()->route('perfil', ['id' => $aluno->id])->with('success', 'Foto salva com sucesso!');
+    // Retorna uma resposta de sucesso, você pode retornar a foto, o aluno ou apenas uma mensagem de sucesso
+    return response()->json(['success' => 'Foto salva com sucesso!', 'path' => $path]);
 }
+
 
 }

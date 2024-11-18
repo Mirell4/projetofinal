@@ -18,12 +18,13 @@
 
         <div class="container perfil-container">
             <div class="profile-picture">
-                <img id="profile-img" src="{{ asset('storage/' . $aluno->foto) ?? 'assets/img/default-profile.png' }}" alt="Foto de Perfil do Aluno">
+            <img id="profile-img" src="{{ asset('storage/img/' . $aluno->foto) }}" alt="Foto de Perfil do Aluno">
             </div>
             <div class="options">
                 <button class="option-button" onclick="openCameraModal()">Abrir Câmera</button>
-                <input type="file" id="file-input" accept="image/*" onchange="selectImage(event)" style="display: none;">
-                <button class="option-button" onclick="document.getElementById('file-input').click()">Selecionar Fotos</button>
+                <input type="file" id="file-input-select" accept="image/*" onchange="selectImage(event)" style="display: none;">
+                <button class="option-button" onclick="document.getElementById('file-input-select').click()">Selecionar Fotos</button>
+
             </div>
             <form action="{{ route('salvar.foto', $aluno->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
