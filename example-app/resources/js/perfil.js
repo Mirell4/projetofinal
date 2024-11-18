@@ -142,12 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('commentModal').style.display = 'block';
     };
   
-    // Abrir o modal de edição (implementar conforme necessário)
-    openEditModal.onclick = function() {
-      optionsMenu.style.display = 'none';
-      // Exibir o modal de edição aqui
-      alert('Função de edição ainda não implementada');
-    };
+    
   
     // Fechar o menu de opções se clicar fora
     window.onclick = function(event) {
@@ -172,6 +167,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+
+    
+    document.getElementById('openEditModal').addEventListener('click', function () {
+        document.getElementById('editModal').style.display = 'block';
+    });
+    
+    document.getElementById('closeEditModal').addEventListener('click', function () {
+        document.getElementById('editModal').style.display = 'none';
+    });
+    
+    // Fecha o modal ao clicar fora da caixa de conteúdo
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('editModal')) {
+            document.getElementById('editModal').style.display = 'none';
+        }
+    };
+    
 
 
 

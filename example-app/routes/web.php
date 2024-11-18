@@ -53,6 +53,10 @@ Route::get('/foto/{id}', [AlunoController::class, 'capturarFoto'])->name('foto')
 
 Route::post('/foto/salvar/{id}', [AlunoController::class, 'salvarFoto'])->name('salvar.foto');
 
+// editar perfil
+Route::put('/perfil/{id}', [AlunoController::class, 'update'])->name('perfil.update');
+
+
 
 
 

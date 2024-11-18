@@ -101,8 +101,7 @@ class AlunoController extends Controller
     }
 
 
-    public function salvarFoto(Request $request, $id)
-{
+    public function salvarFoto(Request $request, $id){
     // Encontra o aluno pelo ID ou retorna 404 caso não seja encontrado
     $aluno = Aluno::findOrFail($id);
 
@@ -125,5 +124,31 @@ class AlunoController extends Controller
     return response()->json(['success' => 'Foto salva com sucesso!', 'path' => $path]);
 }
 
+
+public function update(Request $request, $id){
+    $aluno = Aluno::findOrFail($id);
+    $aluno->update([
+        'nome' => $request->nome,
+        'nascimento' => $request->nascimento,
+        'endereco' => $request->endereco,
+        // Outros campos que você deseja atualizar
+    ]);
+
+    // Se uma nova foto for enviada
+    if ($request->hasFile('foto')) {
+        $path = $request->file('foto')->store('public/fotos');
+        $aluno->foto = basename($path);
+    }
+
+    // Atualiza o contato (se necessário)
+    if ($aluno->contatos()->exists()) {
+        $aluno->contatos->first()->update([
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+        ]);
+    }
+
+    return redirect()->route('perfil', $aluno->id)->with('success', 'Perfil atualizado com sucesso!');
+}
 
 }

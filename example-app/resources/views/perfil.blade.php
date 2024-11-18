@@ -158,6 +158,44 @@
         </div>
     </div>
 
+    
+    <!-- Modal para Editar Perfil -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeEditModal">&times;</span>
+            <h3>Editar Perfil</h3>
+            <form id="editProfileForm" method="post" action="{{ route('perfil.update', $aluno->id) }}" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="modal-input-group">
+                    <label for="editNome">Nome:</label>
+                    <input type="text" id="editNome" name="nome" value="{{ $aluno->nome }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" name="email" value="{{ $aluno->contatos()->exists() ? $aluno->contatos->first()->email : '' }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
+                    <label for="editTelefone">Telefone:</label>
+                    <input type="text" id="editTelefone" name="telefone" value="{{ $aluno->contatos()->exists() ? $aluno->contatos->first()->telefone : '' }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
+                    <label for="editEndereco">Endereço:</label>
+                    <input type="text" id="editEndereco" name="endereco" value="{{ $aluno->endereco }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
+                    <label for="editNascimento">Data de Nascimento:</label>
+                    <input type="date" id="editNascimento" name="nascimento" value="{{ $aluno->nascimento }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
+                    <label for="editFoto">Foto de Perfil:</label>
+                    <input type="file" id="editFoto" name="foto" class="modal-input">
+                </div>
+                <button type="submit" class="modal-submit-btn">Salvar alterações</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 GestClass. Todos os direitos reservados.</p>
     </footer>
