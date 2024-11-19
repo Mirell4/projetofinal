@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +13,8 @@
 <body>
 
     <div class="container" id="container">
+<!--form action="{{ route('register.submit') }}" method="POST">
+    @csrf-->
         <div class="form-container sign-up">
             <form action="criada.html">
                 <h1>Criar Conta</h1>
@@ -24,13 +25,24 @@
                     <a href="https://www.linkedin.com/login/pt" class="icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
                 <span>Use seu email para cadastro</span>
-                <input type="text" placeholder="Nome">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
+                <input type="text" placeholder="Nome"  value="{{ old('name') }}" required>  
+                @error('name')
+                <div class="error">{{ $message }}</div>
+                @enderror
+                <input type="email" placeholder="Email" value="{{ old('email') }}" required>
+                @error('email')
+                <div class="error">{{ $message }}</div>
+                @enderror
+                <input type="password" name="password" placeholder="Senha" required>
+                @error('password')
+                <div class="error">{{ $message }}</div>
+                @enderror
+                <input type="password" name="password_confirmation" placeholder="Confirme sua Senha" required>
                 <button type="submit">Criar</button>
             </form>
         </div>
         <div class="form-container sign-in">
+            <!--<form action="{{ route('login.submit') }}" method="POST">-->
             <form action="index.html">
                 <h1>Entrar</h1>
                 <div class="social-icons">

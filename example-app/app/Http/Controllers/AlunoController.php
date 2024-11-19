@@ -129,8 +129,18 @@ public function update(Request $request, $id){
     $aluno = Aluno::findOrFail($id);
     $aluno->update([
         'nome' => $request->nome,
-        'nascimento' => $request->nascimento,
+        'telefone' => $request->endereco,
+        'email' => $request->email,
+        'rg' => $request->rg,
+        'cpf' => $request->cpf,
         'endereco' => $request->endereco,
+        'nascimento' => $request->nascimento,
+        'responsavel' => $request->responsavel,
+        'tipo' => $request->tipo,
+        'inicio' => $request->inicio,
+        'termino' => $request->termino,
+        'horario' => $request->horario,
+        
         // Outros campos que você deseja atualizar
     ]);
 
@@ -151,4 +161,26 @@ public function update(Request $request, $id){
     return redirect()->route('perfil', $aluno->id)->with('success', 'Perfil atualizado com sucesso!');
 }
 
+public function editFoto(Request $request, $id){
+    // Encontra o aluno pelo ID ou retorna 404 caso não seja encontrado
+    $aluno = Aluno::findOrFail($id);
+
+    // Verifica se o arquivo foi enviado e se é válido
+    if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+        // Armazena a foto no disco 'public', dentro da pasta 'img'
+        $path = $request->file('foto')->store('img', 'public');
+
+        // Atualiza o campo 'foto' do aluno com o caminho relativo da foto
+        $aluno->foto = $path;
+
+        // Salva as alterações no banco de dados
+        $aluno->save();
+    } else {
+        // Caso o arquivo não seja válido ou não tenha sido enviado, você pode retornar uma resposta de erro.
+        return response()->json(['error' => 'Foto inválida ou não enviada.'], 400);
+    }
+
+    // Retorna uma resposta de sucesso, você pode retornar a foto, o aluno ou apenas uma mensagem de sucesso
+    return response()->json(['success' => 'Foto salva com sucesso!', 'path' => $path]);
+}
 }

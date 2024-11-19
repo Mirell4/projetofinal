@@ -70,7 +70,7 @@
                         @foreach($alunos as $aluno)
                             <a href="{{ route('perfil', $aluno->id) }}">
                                 <div class="card">
-                                    <img src="{{ asset($aluno->foto) }}" alt="{{ $aluno->nome }}">
+                                    <img src="{{ asset('storage/' . $aluno->foto) }}" alt="{{ $aluno->nome }}">
                                     <h2>{{ $aluno->nome }}</h2>
                                     <p>Curso: {{ $aluno->tipo }}</p>
                                 </div>

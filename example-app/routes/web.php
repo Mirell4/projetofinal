@@ -4,6 +4,7 @@ use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\AtendimentoSaudeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 // Route::resource('alunos', 'AlunoController');
@@ -55,6 +56,15 @@ Route::post('/foto/salvar/{id}', [AlunoController::class, 'salvarFoto'])->name('
 
 // editar perfil
 Route::put('/perfil/{id}', [AlunoController::class, 'update'])->name('perfil.update');
+
+
+Route::post('register', [AuthController::class, 'register'])->name('register.submit');
+Route::post('login', [AuthController::class, 'login'])->name('login.submit');
+
+
+
+Route::post('/perfil{id}', [AlunoController::class, 'editFoto'])->name('edit.foto');
+
 
 
 

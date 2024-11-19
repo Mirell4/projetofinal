@@ -32,8 +32,9 @@
             </button>            
   
             <div class="profile-pic">
-                <img src="{{ asset($aluno->foto) }}" alt="{{ $aluno->nome }}">
+                <img src="{{ asset('storage/' . $aluno->foto) }}" alt="{{ $aluno->nome }}">
             </div>
+            
             <div class="info">
                 <h1>{{ $aluno->nome }}</h1>
             </div>
@@ -172,12 +173,20 @@
                     <input type="text" id="editNome" name="nome" value="{{ $aluno->nome }}" class="modal-input" required>
                 </div>
                 <div class="modal-input-group">
+                    <label for="editTelefone">Telefone:</label>
+                    <input type="text" id="editTelefone" name="telefone" value="{{ $aluno->contatos()->exists() ? $aluno->contatos->first()->telefone : '' }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
                     <label for="editEmail">Email:</label>
                     <input type="email" id="editEmail" name="email" value="{{ $aluno->contatos()->exists() ? $aluno->contatos->first()->email : '' }}" class="modal-input" required>
                 </div>
                 <div class="modal-input-group">
-                    <label for="editTelefone">Telefone:</label>
-                    <input type="text" id="editTelefone" name="telefone" value="{{ $aluno->contatos()->exists() ? $aluno->contatos->first()->telefone : '' }}" class="modal-input" required>
+                    <label for="editRg">Rg:</label>
+                    <input type="text" id="editRg" name="rg" value="{{ $aluno->rg }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
+                    <label for="editCpf">Cpf:</label>
+                    <input type="text" id="editCpf" name="cpf" value="{{ $aluno->cpf }}" class="modal-input" required>
                 </div>
                 <div class="modal-input-group">
                     <label for="editEndereco">Endereço:</label>
@@ -188,9 +197,26 @@
                     <input type="date" id="editNascimento" name="nascimento" value="{{ $aluno->nascimento }}" class="modal-input" required>
                 </div>
                 <div class="modal-input-group">
-                    <label for="editFoto">Foto de Perfil:</label>
-                    <input type="file" id="editFoto" name="foto" class="modal-input">
+                    <label for="editResponsavel">Responsavel:</label>
+                    <input type="text" id="editResponsavel" name="responsavel" value="{{ $aluno->contatos()->exists() ? $aluno->contatos->first()->responsavel : '' }}" class="modal-input" required>
                 </div>
+                <div class="modal-input-group">
+                    <label for="editTipo">Curso:</label>
+                    <input type="text" id="editTipo" name="tipo" value="{{ $aluno->tipo }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
+                    <label for="editInicio">Ínicio do Curso:</label>
+                    <input type="date" id="editInicio" name="inicio" value="{{ $aluno->inicio }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
+                    <label for="editTermino">Término do Curso:</label>
+                    <input type="date" id="editTermino" name="termino" value="{{ $aluno->termino }}" class="modal-input" required>
+                </div>
+                <div class="modal-input-group">
+                    <label for="editHorario">Período:</label>
+                    <input type="text" id="editHorario" name="horario" value="{{ $aluno->horario }}" class="modal-input" required>
+                </div>
+                
                 <button type="submit" class="modal-submit-btn">Salvar alterações</button>
             </form>
         </div>

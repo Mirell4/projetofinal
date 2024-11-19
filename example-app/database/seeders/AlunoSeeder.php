@@ -21,7 +21,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-01-01',
         'rg' => '123456789-0',
         'cpf' => '123.456.789-00',
-        'foto' => '/storage/img/mulher1.jpg',
+        'foto' => '/img/mulher1.jpg',
     ],
     [
         'tipo' => 'FIC - PSICOLOGIA',
@@ -33,7 +33,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-02-01',
         'rg' => '987654321-0',
         'cpf' => '987.654.321-00',
-        'foto' => '/storage/img/mulher2.jpg',
+        'foto' => '/img/mulher2.jpg',
     ],
     [
         'tipo' => 'Técnico - Engenharia Civil',
@@ -45,7 +45,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-03-01',
         'rg' => '456789123-0',
         'cpf' => '456.789.123-00',
-        'foto' => '/storage/img/mulher3.jpg',
+        'foto' => '/img/mulher3.jpg',
     ],
     [
         'tipo' => 'FIC - Medicina',
@@ -57,7 +57,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-04-01',
         'rg' => '321654987-0',
         'cpf' => '321.654.987-00',
-        'foto' => '/storage/img/mulher4.jpg',
+        'foto' => '/img/mulher4.jpg',
     ],
     [
         'tipo' => 'FIC - Direito',
@@ -69,7 +69,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-05-01',
         'rg' => '654321987-0',
         'cpf' => '654.321.987-00',
-        'foto' => '/storage/img/mulher5.jpg',
+        'foto' => '/img/mulher5.jpg',
     ],
     [
         'tipo' => 'FIC - Arquitetura',
@@ -81,7 +81,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-06-01',
         'rg' => '789123456-0',
         'cpf' => '789.123.456-00',
-        'foto' => '/storage/img/mulher6.jpeg',
+        'foto' => '/img/mulher6.jpeg',
     ],
     [
         'tipo' => 'FIC - Farmácia',
@@ -93,7 +93,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-07-01',
         'rg' => '147258369-0',
         'cpf' => '147.258.369-00',
-        'foto' => '/storage/img/mulher7.jpg',
+        'foto' => '/img/mulher7.jpg',
     ],
     [
         'tipo' => 'FIC - Nutrição',
@@ -105,7 +105,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-08-01',
         'rg' => '258369147-0',
         'cpf' => '258.369.147-00',
-        'foto' => '/storage/img/pessoa2.jpg',
+        'foto' => '/img/pessoa2.jpg',
     ],
     [
         'tipo' => 'FIC - Engenharia de Software',
@@ -117,7 +117,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-09-01',
         'rg' => '369258147-0',
         'cpf' => '369.258.147-00',
-        'foto' => '/storage/img/pessoa3.jpg',
+        'foto' => '/img/pessoa3.jpg',
     ],
     [
         'tipo' => 'FIC - Ciência da Computação',
@@ -129,7 +129,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-01-01',
         'rg' => '147963258-0',
         'cpf' => '147.963.258-00',
-        'foto' => '/storage/img/pessoa1.jpg',
+        'foto' => '/img/pessoa1.jpg',
     ],
     [
         'tipo' => 'FIC - Engenharia Mecânica',
@@ -141,7 +141,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-02-01',
         'rg' => '321987654-0',
         'cpf' => '321.987.654-00',
-        'foto' => '/storage/img/homem2.jpg',
+        'foto' => '/img/homem2.jpg',
     ],
     [
         'tipo' => 'FIC - ADM',
@@ -153,7 +153,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-03-01',
         'rg' => '654987321-0',
         'cpf' => '654.987.321-00',
-        'foto' => '/storage/img/homem3.jpg',
+        'foto' => '/img/homem3.jpg',
     ],
     [
         'tipo' => 'FIC - Direito',
@@ -165,7 +165,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-04-01',
         'rg' => '987321654-0',
         'cpf' => '987.321.654-00',  
-        'foto' => '/storage/img/homem4.jpg',
+        'foto' => '/img/homem4.jpg',
     ],
     [
         'tipo' => 'FIC - Engenharia Civil',
@@ -177,7 +177,7 @@ class AlunoSeeder extends Seeder
         'inicio' => '2023-05-01',
         'rg' => '258147369-0',
         'cpf' => '258.147.369-00',
-        'foto' => '/storage/img/homem5.jpg',
+        'foto' => '/img/homem5.jpg',
         ],
         
         ]);
