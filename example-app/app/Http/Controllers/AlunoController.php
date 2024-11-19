@@ -4,34 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\contato;
-use App\Models\Aluno; 
+use App\Models\Aluno;
+use Illuminate\Support\Facades\Auth;
 
 class AlunoController extends Controller
 {
 
     /* Pesquisar alunos pelo nome */
     public function pesquisarAlunos(Request $request){
-    $request->validate([
-        'search' => 'required|string|max:255',
-    ]);
+        $request->validate([
+            'search' => 'required|string|max:255',
+        ]);
 
-    $nome = $request->input('search');
-    $palavras = explode(' ', $nome);
-    $query = Aluno::query();
+        $nome = $request->input('search');
+        $palavras = explode(' ', $nome);
+        $user = Auth::user();
+        $query = Aluno::where('user_id', $user->id);
 
-    foreach ($palavras as $palavra) {
-        $query->where('nome', 'like', '%' . $palavra . '%');
-    }
+        foreach ($palavras as $palavra) {
+            $query->where('nome', 'like', '%' . $palavra . '%');
+        }
 
-    $alunos = $query->get();
+        $alunos = $query->get();
 
-    return view('pesquisa', compact('alunos'));
+        return view('pesquisa', compact('alunos'));
     }
 
 
     public function listarAlunos()
     {
-        $alunos = Aluno::all(); // Busca todos os alunos no banco de dados
+        $user = Auth::user();
+        $alunos = Aluno::where('user_id', $user->id)->get(); // Busca todos os alunos no banco de dados
         return view('pesquisa', compact('alunos')); // Passa a lista de alunos para a view
     }
 
@@ -183,4 +186,5 @@ public function editFoto(Request $request, $id){
     // Retorna uma resposta de sucesso, você pode retornar a foto, o aluno ou apenas uma mensagem de sucesso
     return response()->json(['success' => 'Foto salva com sucesso!', 'path' => $path]);
 }
+
 }

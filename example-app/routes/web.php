@@ -58,12 +58,19 @@ Route::post('/foto/salvar/{id}', [AlunoController::class, 'salvarFoto'])->name('
 Route::put('/perfil/{id}', [AlunoController::class, 'update'])->name('perfil.update');
 
 
+
+//registrar e login
 Route::post('register', [AuthController::class, 'register'])->name('register.submit');
 Route::post('login', [AuthController::class, 'login'])->name('login.submit');
 
 
+Route::get('/criada', [AuthController::class, 'criada'])->name('criada');
 
 Route::post('/perfil{id}', [AlunoController::class, 'editFoto'])->name('edit.foto');
+
+
+//edit coment
+
 
 
 

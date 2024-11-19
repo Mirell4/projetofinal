@@ -118,8 +118,8 @@
                 </div>
             </div>
         @endforeach
-        </div>
     </section>
+
 
 
 
@@ -159,6 +159,7 @@
         </div>
     </div>
 
+    
     
     <!-- Modal para Editar Perfil -->
     <div id="editModal" class="modal">
@@ -222,10 +223,20 @@
         </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+    
+
     <footer>
         <p>&copy; 2024 GestClass. Todos os direitos reservados.</p>
     </footer>
-
     <script src="perfil.js"></script>
 </body>
 </html>

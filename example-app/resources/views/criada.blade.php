@@ -25,7 +25,7 @@
     <script>
         function redirectToLogin() {
             // Aqui você pode redirecionar para a página de login
-            window.location.href = "login.html"; // Mudar o link para a página de login real
+            window.location.href = "login"; // Mudar o link para a página de login real
         }
     </script>
 </body>

@@ -25,6 +25,8 @@ return new class extends Migration
             $table->binary('foto')->nullable();
             // Add other necessary columns here
             $table->timestamps(); // Adds created_at and updated_at columns
+
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
     }
 

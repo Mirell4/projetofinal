@@ -31,8 +31,12 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Redirecionando o usuário para a página inicial ou dashboard
-        return redirect()->route('pesquisa');
+        return redirect()->route('criada');
     }
+            public function criada()
+        {
+            return view('criada'); // 
+        }
     // Método para fazer login
     public function login(Request $request)
     {
@@ -45,7 +49,7 @@ class AuthController extends Controller
         // Tentando fazer login com as credenciais fornecidas
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Caso o login seja bem-sucedido
-            return redirect()->route('dashboard'); // Redireciona para o dashboard (ajuste conforme necessário)
+            return redirect()->route('pesquisa'); // Redireciona 
         }
 
         // Caso o login falhe, retorna um erro

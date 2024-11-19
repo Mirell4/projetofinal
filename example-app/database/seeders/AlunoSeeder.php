@@ -22,6 +22,7 @@ class AlunoSeeder extends Seeder
         'rg' => '123456789-0',
         'cpf' => '123.456.789-00',
         'foto' => '/img/mulher1.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - PSICOLOGIA',
@@ -34,6 +35,7 @@ class AlunoSeeder extends Seeder
         'rg' => '987654321-0',
         'cpf' => '987.654.321-00',
         'foto' => '/img/mulher2.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'Técnico - Engenharia Civil',
@@ -46,6 +48,7 @@ class AlunoSeeder extends Seeder
         'rg' => '456789123-0',
         'cpf' => '456.789.123-00',
         'foto' => '/img/mulher3.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Medicina',
@@ -58,6 +61,7 @@ class AlunoSeeder extends Seeder
         'rg' => '321654987-0',
         'cpf' => '321.654.987-00',
         'foto' => '/img/mulher4.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Direito',
@@ -70,6 +74,7 @@ class AlunoSeeder extends Seeder
         'rg' => '654321987-0',
         'cpf' => '654.321.987-00',
         'foto' => '/img/mulher5.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Arquitetura',
@@ -82,6 +87,7 @@ class AlunoSeeder extends Seeder
         'rg' => '789123456-0',
         'cpf' => '789.123.456-00',
         'foto' => '/img/mulher6.jpeg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Farmácia',
@@ -94,6 +100,7 @@ class AlunoSeeder extends Seeder
         'rg' => '147258369-0',
         'cpf' => '147.258.369-00',
         'foto' => '/img/mulher7.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Nutrição',
@@ -106,6 +113,7 @@ class AlunoSeeder extends Seeder
         'rg' => '258369147-0',
         'cpf' => '258.369.147-00',
         'foto' => '/img/pessoa2.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Engenharia de Software',
@@ -118,6 +126,7 @@ class AlunoSeeder extends Seeder
         'rg' => '369258147-0',
         'cpf' => '369.258.147-00',
         'foto' => '/img/pessoa3.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Ciência da Computação',
@@ -130,6 +139,7 @@ class AlunoSeeder extends Seeder
         'rg' => '147963258-0',
         'cpf' => '147.963.258-00',
         'foto' => '/img/pessoa1.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Engenharia Mecânica',
@@ -142,6 +152,7 @@ class AlunoSeeder extends Seeder
         'rg' => '321987654-0',
         'cpf' => '321.987.654-00',
         'foto' => '/img/homem2.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - ADM',
@@ -154,6 +165,7 @@ class AlunoSeeder extends Seeder
         'rg' => '654987321-0',
         'cpf' => '654.987.321-00',
         'foto' => '/img/homem3.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Direito',
@@ -166,6 +178,7 @@ class AlunoSeeder extends Seeder
         'rg' => '987321654-0',
         'cpf' => '987.321.654-00',  
         'foto' => '/img/homem4.jpg',
+        'user_id' => 1,
     ],
     [
         'tipo' => 'FIC - Engenharia Civil',
@@ -178,6 +191,7 @@ class AlunoSeeder extends Seeder
         'rg' => '258147369-0',
         'cpf' => '258.147.369-00',
         'foto' => '/img/homem5.jpg',
+        'user_id' => 1,
         ],
         
         ]);

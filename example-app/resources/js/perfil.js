@@ -150,8 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
         optionsMenu.style.display = 'none';
       }
     };
-    // perfil.js
 
+    
+    
+    // perfil.js
     document.addEventListener('DOMContentLoaded', () => {
         const alertBox = document.getElementById('successAlert');
         if (alertBox) {
@@ -183,10 +185,8 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('editModal').style.display = 'none';
         }
     };
-    
-
-
-
   });
+
+
   
   

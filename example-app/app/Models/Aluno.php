@@ -18,4 +18,8 @@ class Aluno extends Model
     public function atendimentos(){
         return $this->hasMany(atendimento::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

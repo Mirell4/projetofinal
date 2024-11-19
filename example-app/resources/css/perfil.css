@@ -81,6 +81,7 @@ footer {
   text-align: center;
   padding: 20px 0;
   font-size: 0.9em;
+  margin-top: auto; 
 }
 
 /* Estilo para a área de comentários */
@@ -449,7 +450,7 @@ button#submitComment:hover {
   background-color: rgba(0, 0, 0, 0.4);
   padding-top: 60px;
 }
-
+  
 .modal-content {
   background-color: #fefefe;
   margin: 5% auto;
@@ -458,6 +459,7 @@ button#submitComment:hover {
   width: 80%;
   max-width: 500px;
   border-radius: 10px;
+  
 }
 
 .modal-input {
@@ -498,4 +500,3 @@ button#submitComment:hover {
   text-decoration: none;
   cursor: pointer;
 }
-
