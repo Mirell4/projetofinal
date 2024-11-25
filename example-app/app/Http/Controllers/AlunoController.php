@@ -81,7 +81,8 @@ class AlunoController extends Controller
             'tipo' => $validatedData['tipo'],
             'inicio' => $validatedData['inicio'],
             'termino' => $validatedData['termino'],
-            //'foto' => $validatedData['foto'],
+            'user_id'=> Auth::user()->id
+             //'foto' => $validatedData['foto'],
         ]);
 
         // Criação dos contatos na tabela contatos, associando ao aluno
