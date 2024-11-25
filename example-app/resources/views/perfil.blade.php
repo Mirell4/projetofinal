@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Perfil Pessoal</title>
-    <link rel="stylesheet" href="perfil.css">
     @vite('resources/css/perfil.css')
     @vite('resources/js/perfil.js')
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -117,6 +116,53 @@
                     </span>
                 </div>
             </div>
+            
+            <!-- Modal para Editar Atendimento -->
+            <div id="editAtendimentoModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeEditAtendimentoModal">&times;</span>
+                    <h3>Editar Atendimento</h3>
+                    <form id="editAtendimentoForm" method="post" action="{{ route('atendimento.update', ['id' => $atendimento->id]) }}" enctype="multipart/form-data">
+
+
+                        @csrf
+                        @method('PUT')
+
+                        <!-- Título do Atendimento -->
+                        <div class="modal-input-group">
+                            <label for="titulo">Título:</label>
+                            <input type="text" id="titulo" name="titulo" value="{{ old('titulo', $atendimento->titulo) }}" class="modal-input" required>
+                        </div>
+
+                        <!-- Comentário do Atendimento -->
+                        <div class="modal-input-group">
+                            <label for="comentario">Comentário:</label>
+                            <textarea id="comentario" name="comentario" class="modal-input" required>{{ old('comentario', $atendimento->comentario) }}</textarea>
+                        </div>
+
+                        <!-- Anexo de Arquivo -->
+                        <div class="modal-input-group">
+                            <label for="arquivo">Anexar Arquivo:</label>
+                            <input type="file" id="arquivo" name="arquivo" class="modal-input">
+                            @if($atendimento->arquivo)
+                                <a href="{{ asset('storage/' . $atendimento->arquivo) }}" target="_blank">Visualizar Arquivo</a>
+                            @endif
+                        </div>
+
+                        <!-- Status do Atendimento -->
+                        <div class="modal-input-group">
+                            <label for="status">Status:</label>
+                            <select id="status" name="status" class="modal-input" required>
+                                <option value="Ativo" @if($atendimento->status == 'Ativo') selected @endif>Ativo</option>
+                                <option value="Inativo" @if($atendimento->status == 'Inativo') selected @endif>Inativo</option>
+                                <option value="Pendente" @if($atendimento->status == 'Pendente') selected @endif>Pendente</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="modal-submit-btn">Salvar Alterações</button>
+                    </form>
+                </div>
+            </div>
         @endforeach
     </section>
 
@@ -129,8 +175,8 @@
 
         <!-- Menu de opções -->
         <div class="options-menu" id="optionsMenu">
-            <button class="option-btn" id="openCommentModal">Comentários</button>
-            <button class="option-btn" id="openEditModal">Editar</button>
+            <button class="option-btn" id="openCommentModal">Adicionar Comentários</button>
+            <button class="option-btn" id="openEditModal">Editar Perfil</button>
         </div>
     </section>
 
@@ -158,6 +204,9 @@
             </form>
         </div>
     </div>
+
+
+
 
     
     
@@ -237,6 +286,5 @@
     <footer>
         <p>&copy; 2024 GestClass. Todos os direitos reservados.</p>
     </footer>
-    <script src="perfil.js"></script>
 </body>
 </html>

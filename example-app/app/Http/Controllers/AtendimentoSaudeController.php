@@ -32,7 +32,8 @@ class AtendimentoSaudeController extends Controller
         return redirect()->back()->with('success', 'Comentário salvo com sucesso!');
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         // Validação dos dados
         $request->validate([
             'titulo' => 'required|string|max:255',
@@ -60,11 +61,16 @@ class AtendimentoSaudeController extends Controller
         $atendimento->save();
 
         // Retorna uma resposta de sucesso
-        return response()->json([
-            'message' => 'Comentário atualizado com sucesso!',
-            'atendimento' => $atendimento
-        ]);
+        return redirect()->route('atendimento.index', $atendimento->aluno_id)->with('success', 'Atendimento atualizado com sucesso!');
     }
+    // Método para editar o atendimento
+    public function edit($id)
+    {
+        $atendimento = Atendimento::findOrFail($id);  // Busca o atendimento pelo ID
+        
+        return view('atendimento.edit', compact('atendimento'));  // Passa a variável para a view
+    }
+    
 
 }
 

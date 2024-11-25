@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('horario');
             $table->string('endereco');
-            $table->string('nascimento');
+            $table->date('nascimento');
             $table->string('cpf');
             $table->string('rg');
             $table->string('inicio');

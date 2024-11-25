@@ -70,6 +70,14 @@ Route::post('/perfil{id}', [AlunoController::class, 'editFoto'])->name('edit.fot
 
 
 //edit coment
+// Exibir o formulário de edição do atendimento
+Route::get('/atendimento/{id}/edit', [AtendimentoSaudeController::class, 'edit'])->name('atendimento.edit');
+
+// Atualizar atendimento após edição
+Route::put('/atendimento/{id}', [AtendimentoSaudeController::class, 'update'])->name('atendimento.update');
+
+
+
 
 
 

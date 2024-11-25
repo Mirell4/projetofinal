@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   }
 
+  if(submitComment){
   // Função para adicionar ou editar um comentário
   submitComment.onclick = function() {
       const title = document.getElementById('commentTitle').value;
@@ -94,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
           alert('Preencha o título e o comentário!');
       }
   }
+}
 
   // Função para limpar os campos do modal
   function clearModalFields() {
@@ -167,6 +169,35 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+    
+    // Abertura do modal de edição de comentário
+const openEditCommentModal = (comentarioId, titulo, comentario, status) => {
+    document.getElementById('editCommentModal').style.display = 'block';
+
+    // Preenche os campos do modal com as informações do comentário
+    document.getElementById('commentTitle').value = titulo;
+    document.getElementById('commentText').value = comentario;
+    document.getElementById('commentStatus').value = status;
+
+    // Configura o formulário para enviar os dados do comentário
+    const form = document.getElementById('editCommentForm');
+    form.action = `/comentarios/${comentarioId}`;  // Ajuste conforme a rota do seu backend
+};
+
+// Fechar o modal de edição
+if(document.getElementById('closeEditCommentModal')){
+    document.getElementById('closeEditCommentModal').onclick = () => {
+        document.getElementById('editCommentModal').style.display = 'none';
+    };
+}
+
+// Fechar o modal ao clicar fora da área de conteúdo
+window.onclick = (event) => {
+    if (event.target == document.getElementById('editCommentModal')) {
+        document.getElementById('editCommentModal').style.display = 'none';
+    }
+};
+
 
 
     
