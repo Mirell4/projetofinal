@@ -32,45 +32,29 @@ class AtendimentoSaudeController extends Controller
         return redirect()->back()->with('success', 'Comentário salvo com sucesso!');
     }
 
-    public function update(Request $request, $id)
-    {
-        // Validação dos dados
-        $request->validate([
-            'titulo' => 'required|string|max:255',
-            'comentario' => 'required|string',
-            'status' => 'required|in:Ativo,Inativo,Pendente',
-            'arquivo' => 'nullable|file',  // Validação do arquivo, caso haja
-        ]);
+            public function update(Request $request, $id)
+        {
+            $atendimento = Atendimento::findOrFail($id);
 
-        // Encontrar o atendimento pelo ID
-        $atendimento = Atendimento::findOrFail($id);
+            // Validação dos dados (caso necessário)
+            $validated = $request->validate([
+                'titulo' => 'required|string|max:255',
+                'comentario' => 'required|string',
+                'status' => 'required|string',
+                'arquivo' => 'nullable|file',
+            ]);
 
-        // Atualizar os dados do atendimento
-        $atendimento->titulo = $request->input('titulo');
-        $atendimento->comentario = $request->input('comentario');
-        $atendimento->status = $request->input('status');
+            // Atualiza os dados do atendimento
+            $atendimento->update([
+                'titulo' => $request->titulo,
+                'comentario' => $request->comentario,
+                'status' => $request->status,
+                // Lógica de upload de arquivo aqui, se necessário
+            ]);
 
-        // Se houver um arquivo, processa o upload
-        if ($request->hasFile('arquivo')) {
-            $file = $request->file('arquivo');
-            $path = $file->storeAs('public/arquivos', $file->getClientOriginalName());
-            $atendimento->arquivo = $path;
+            return redirect()->back()->with('success', 'Atendimento atualizado com sucesso!');
         }
 
-        // Salva as mudanças
-        $atendimento->save();
-
-        // Retorna uma resposta de sucesso
-        return redirect()->route('atendimento.index', $atendimento->aluno_id)->with('success', 'Atendimento atualizado com sucesso!');
-    }
-    // Método para editar o atendimento
-    public function edit($id)
-    {
-        $atendimento = Atendimento::findOrFail($id);  // Busca o atendimento pelo ID
-        
-        return view('atendimento.edit', compact('atendimento'));  // Passa a variável para a view
-    }
-    
 
 }
 

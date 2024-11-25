@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
           editingComment = comment; // Armazenar o comentário atual para edição
 
           // Preencher o modal com os dados do comentário
-          const title = comment.querySelector('h4').textContent;
+          const title = comment.querySelector('h3').textContent;
           const text = comment.querySelector('p').textContent;
           const statusText = comment.querySelector('.status-text').textContent;
 
@@ -215,6 +215,8 @@ window.onclick = (event) => {
             document.getElementById('editModal').style.display = 'none';
         }
     };
+
+    
   });
 
 

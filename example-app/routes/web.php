@@ -76,6 +76,10 @@ Route::get('/atendimento/{id}/edit', [AtendimentoSaudeController::class, 'edit']
 // Atualizar atendimento após edição
 Route::put('/atendimento/{id}', [AtendimentoSaudeController::class, 'update'])->name('atendimento.update');
 
+// Rota para editar atendimento
+Route::put('/atendimentos/{id}', [AtendimentoSaudeController::class, 'update']);
+
+
 
 
 

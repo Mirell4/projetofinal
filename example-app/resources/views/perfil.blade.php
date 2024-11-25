@@ -89,22 +89,22 @@
         </div>
 
        <!-- Área de comentários -->
-    <section class="comments-section">
-        <h2>Comentários</h2>
-        <div class="comments-list">
+<section class="comments-section">
+    <h2>Comentários</h2>
+    <div class="comments-list">
         @foreach ($aluno->atendimentos as $atendimento)
             <div class="card-coment comment">
                 <h3 class="titu">{{ $atendimento->titulo }}</h3>
                 <p class="coment">{{ $atendimento->comentario }}</p>
+
                 @if ($atendimento->arquivo && Storage::exists('public/' . $atendimento->arquivo))
-                            <a href="{{ asset('storage/' . $atendimento->arquivo) }}" download="{{ basename($atendimento->arquivo) }}">Arquivo</a>
-                        @else
-                            <span>Arquivo não disponível</span>
+                    <a href="{{ asset('storage/' . $atendimento->arquivo) }}" download="{{ basename($atendimento->arquivo) }}">Arquivo</a>
+                @else
+                    <span>Arquivo não disponível</span>
                 @endif
 
                 <div class="status-container">
                     <span class="status-text">{{ $atendimento->status }}</span>
-               
                     <span class="comment-status
                         @if(strtolower(trim($atendimento->status)) == 'ativo')
                             ativo
@@ -115,58 +115,103 @@
                         @endif">
                     </span>
                 </div>
-            </div>
-            
-            <!-- Modal para Editar Atendimento -->
-            <div id="editAtendimentoModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeEditAtendimentoModal">&times;</span>
-                    <h3>Editar Atendimento</h3>
-                    <form id="editAtendimentoForm" method="post" action="{{ route('atendimento.update', ['id' => $atendimento->id]) }}" enctype="multipart/form-data">
 
-
-                        @csrf
-                        @method('PUT')
-
-                        <!-- Título do Atendimento -->
-                        <div class="modal-input-group">
-                            <label for="titulo">Título:</label>
-                            <input type="text" id="titulo" name="titulo" value="{{ old('titulo', $atendimento->titulo) }}" class="modal-input" required>
-                        </div>
-
-                        <!-- Comentário do Atendimento -->
-                        <div class="modal-input-group">
-                            <label for="comentario">Comentário:</label>
-                            <textarea id="comentario" name="comentario" class="modal-input" required>{{ old('comentario', $atendimento->comentario) }}</textarea>
-                        </div>
-
-                        <!-- Anexo de Arquivo -->
-                        <div class="modal-input-group">
-                            <label for="arquivo">Anexar Arquivo:</label>
-                            <input type="file" id="arquivo" name="arquivo" class="modal-input">
-                            @if($atendimento->arquivo)
-                                <a href="{{ asset('storage/' . $atendimento->arquivo) }}" target="_blank">Visualizar Arquivo</a>
-                            @endif
-                        </div>
-
-                        <!-- Status do Atendimento -->
-                        <div class="modal-input-group">
-                            <label for="status">Status:</label>
-                            <select id="status" name="status" class="modal-input" required>
-                                <option value="Ativo" @if($atendimento->status == 'Ativo') selected @endif>Ativo</option>
-                                <option value="Inativo" @if($atendimento->status == 'Inativo') selected @endif>Inativo</option>
-                                <option value="Pendente" @if($atendimento->status == 'Pendente') selected @endif>Pendente</option>
-                            </select>
-                        </div>
-
-                        <button type="submit" class="modal-submit-btn">Salvar Alterações</button>
-                    </form>
-                </div>
+                <!-- Botão para editar atendimento -->
+                <button class="edit-btn" data-id="{{ $atendimento->id }}" data-titulo="{{ $atendimento->titulo }}" data-comentario="{{ $atendimento->comentario }}" data-status="{{ $atendimento->status }}" data-arquivo="{{ $atendimento->arquivo }}">Editar</button>
             </div>
         @endforeach
-    </section>
+    </div>
+</section>
 
+<!-- Modal para Editar Atendimento (deve ser único) -->
+<div id="editAtendimentoModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeEditAtendimentoModal">&times;</span>
+        <h3>Editar Atendimento</h3>
+        <form id="editAtendimentoForm" method="post" action="" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
+            <!-- Título do Atendimento -->
+            <div class="modal-input-group">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" class="modal-input" required>
+            </div>
+
+            <!-- Comentário do Atendimento -->
+            <div class="modal-input-group">
+                <label for="comentario">Comentário:</label>
+                <textarea id="comentario" name="comentario" class="modal-input" required></textarea>
+            </div>
+
+            <!-- Anexo de Arquivo -->
+            <div class="modal-input-group">
+                <label for="arquivo">Anexar Arquivo:</label>
+                <input type="file" id="arquivo" name="arquivo" class="modal-input">
+                <div id="arquivo-existente"></div>
+            </div>
+
+            <!-- Status do Atendimento -->
+            <div class="modal-input-group">
+                <label for="status">Status:</label>
+                <select id="status" name="status" class="modal-input" required>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                    <option value="Pendente">Pendente</option>
+                </select>
+            </div>
+
+            <button type="submit" class="modal-submit-btn">Salvar Alterações</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Função para abrir o modal com dados do atendimento
+    function openEditModal(atendimentoId) {
+        // Encontrar o botão de edição que foi clicado
+        let button = document.querySelector(`button[data-id="${atendimentoId}"]`);
+
+        // Preencher o modal com os dados do atendimento
+        document.getElementById('titulo').value = button.getAttribute('data-titulo');
+        document.getElementById('comentario').value = button.getAttribute('data-comentario');
+        document.getElementById('status').value = button.getAttribute('data-status');
+        
+        // Exibir link do arquivo, caso exista
+        let arquivo = button.getAttribute('data-arquivo');
+        let arquivoExibicao = '';
+        if (arquivo) {
+            arquivoExibicao = `<a href="{{ asset('storage/') }}/${arquivo}" target="_blank">Visualizar Arquivo</a>`;
+        }
+        document.getElementById('arquivo-existente').innerHTML = arquivoExibicao;
+
+        // Atualizar o formulário para enviar o ID correto
+        document.getElementById('editAtendimentoForm').action = `/atendimentos/${atendimentoId}`;
+
+        // Exibir o modal
+        document.getElementById('editAtendimentoModal').style.display = 'block';
+    }
+
+    // Fechar o modal
+    document.getElementById('closeEditAtendimentoModal').onclick = function() {
+        document.getElementById('editAtendimentoModal').style.display = 'none';
+    }
+
+    // Fechar o modal quando clicar fora da caixa de conteúdo
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('editAtendimentoModal')) {
+            document.getElementById('editAtendimentoModal').style.display = 'none';
+        }
+    }
+
+    // Atribuir a função openEditModal para os botões de edição
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            let atendimentoId = this.getAttribute('data-id');
+            openEditModal(atendimentoId);
+        });
+    });
+</script>
 
 
 
@@ -182,30 +227,28 @@
 
 
 
-    <!-- Modal para adicionar comentário -->
-    <div id="commentModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Adicionar Comentário</h3>
-            <form id="commentForm" method="post" enctype="multipart/form-data"> <!-- form-->
-                @csrf
-                <input type="text" id="commentTitle" name="titulo" placeholder="Título" class="modal-input" required>
-                <textarea id="commentText" name="comentario" placeholder="Escreva seu comentário aqui..." class="modal-input" required></textarea>
-                <label for="fileUpload">Anexar arquivo:</label>
-                <input type="file" id="fileUpload" name="arquivo" class="modal-input">
-                <label for="commentStatus">Status:</label>
-                <select id="commentStatus" name="status" class="modal-input" required>
-                    <option value="">Selecione um status</option>
-                    <option value="Ativo">Ativo</option>
-                    <option value="Inativo">Inativo</option>
-                    <option value="Pendente">Pendente</option>
-                </select>
-                <button type="submit" id="">Enviar</button>
-            </form>
-        </div>
+    <!-- Modal para Adicionar Comentário -->
+<div id="commentModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeCommentModal">&times;</span>
+        <h3>Adicionar Comentário</h3>
+        <form id="commentForm" method="post" enctype="multipart/form-data"> <!-- form-->
+            @csrf
+            <input type="text" id="commentTitle" name="titulo" placeholder="Título" class="modal-input" required>
+            <textarea id="commentText" name="comentario" placeholder="Escreva seu comentário aqui..." class="modal-input" required></textarea>
+            <label for="fileUpload">Anexar arquivo:</label>
+            <input type="file" id="fileUpload" name="arquivo" class="modal-input">
+            <label for="commentStatus">Status:</label>
+            <select id="commentStatus" name="status" class="modal-input" required>
+                <option value="">Selecione um status</option>
+                <option value="Ativo">Ativo</option>
+                <option value="Inativo">Inativo</option>
+                <option value="Pendente">Pendente</option>
+            </select>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
-
-
+</div>
 
 
     
