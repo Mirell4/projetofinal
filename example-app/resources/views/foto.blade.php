@@ -7,12 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="foto.css">
         @vite('resources/css/foto.css')
-        <title>Perfil do Aluno - Escola Exemplo</title>
+        <title>Adicionar foto</title>
     </head>
     <body>
         <header class="header">
             <button class="back-button" onclick="window.history.back()">Voltar</button>
-            <h1>Escola Exemplo</h1>
+            <h1>Foto</h1>
             <p>Perfil do Aluno</p>
         </header>
 
