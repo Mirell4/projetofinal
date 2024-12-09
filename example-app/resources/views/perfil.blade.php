@@ -153,6 +153,7 @@
                     <div class="modal-input-group">
                         <label for="arquivo">Anexar Arquivo:</label>
                         <input type="file" id="arquivo" name="arquivo" class="modal-input">
+                       
                         <div id="arquivo-existente"></div>
                     </div>
 

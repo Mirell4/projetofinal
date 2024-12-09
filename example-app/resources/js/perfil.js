@@ -134,13 +134,20 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('status').value = status;
 
             if (arquivo) {
+                // Limpar o conteúdo existente antes de adicionar o novo link
+                const arquivoExistenteContainer = document.getElementById('arquivo-existente');
+                arquivoExistenteContainer.innerHTML = ''; // Limpar qualquer conteúdo anterior
+            
                 const arquivoLink = document.createElement('a');
                 arquivoLink.href = `/storage/${arquivo}`;
                 arquivoLink.textContent = 'Arquivo existente';
-                document.getElementById('arquivo-existente').appendChild(arquivoLink);
+                
+                arquivoExistenteContainer.appendChild(arquivoLink);
             } else {
-                document.getElementById('arquivo-existente').innerHTML = ''; // Limpar campo de arquivo existente
+                // Limpar o conteúdo do arquivo existente quando não houver arquivo
+                document.getElementById('arquivo-existente').innerHTML = '';
             }
+            
 
             // Configurar o formulário para enviar os dados
             editAtendimentoForm.action = `/atendimentos/${atendimentoId}`; // Ajuste conforme sua rota do backend

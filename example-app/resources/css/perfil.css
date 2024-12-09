@@ -666,5 +666,37 @@ select {
   margin-right: 8px; /* Espaçamento entre o ícone e o texto */
   font-size: 18px; /* Tamanho do ícone */
 }
+/* Estilo para a área onde o arquivo existente será exibido */
+#arquivo-existente {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Estilo para o link de arquivo existente */
+#arquivo-existente a {
+  display: inline-block;  /* Faz com que o link seja tratado como um bloco para aplicar a borda */
+  padding: 8px 12px; /* Adiciona preenchimento para aumentar a área clicável */
+  border: 2px solid #007bff; /* Borda azul ao redor do link */
+  border-radius: 4px; /* Borda arredondada */
+  color: #007bff; /* Cor do texto do link */
+  font-weight: bold;
+  text-decoration: none; /* Remove a sublinhado padrão */
+  background-color: #f9f9f9; /* Cor de fundo suave */
+  transition: all 0.3s ease; /* Transição suave para todos os efeitos */
+}
+
+/* Estilo para quando o mouse passa sobre o link */
+#arquivo-existente a:hover {
+  color: #fff; /* Cor do texto quando hover */
+  background-color: #007bff; /* Cor de fundo azul ao passar o mouse */
+  border-color: #0056b3; /* Cor da borda quando hover */
+}
+
+/* Caso não exista arquivo, exibe uma mensagem */
+#arquivo-existente span {
+  font-size: 14px;
+  color: #999;
+}
 
 

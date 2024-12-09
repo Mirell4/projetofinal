@@ -181,11 +181,11 @@ public function editFoto(Request $request, $id){
         $aluno->save();
     } else {
         // Caso o arquivo não seja válido ou não tenha sido enviado, você pode retornar uma resposta de erro.
-        return response()->json(['error' => 'Foto inválida ou não enviada.'], 400);
+        //return response()->json(['error' => 'Foto inválida ou não enviada.'], 400);
     }
 
     // Retorna uma resposta de sucesso, você pode retornar a foto, o aluno ou apenas uma mensagem de sucesso
-    return response()->json(['success' => 'Foto salva com sucesso!', 'path' => $path]);
+    //return response()->json(['success' => 'Foto salva com sucesso!', 'path' => $path]);
 }
 
 }

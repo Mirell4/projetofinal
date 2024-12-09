@@ -7,157 +7,173 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
   <style>
    body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: #fff;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            box-sizing: border-box;
-        }
-        .header .logo {
-            font-size: 24px;
-            font-weight: 600;
-            color: #3b82f6;
-        }
-        .header .nav {
-            display: flex;
-            gap: 20px;
-        }
-        .header .nav a {
-            text-decoration: none;
-            color: #6b7280;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        .carousel {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-        }
-        .carousel-inner {
-            display: flex;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carousel-item {
-            min-width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            text-align: center;
-        }
-        .carousel-item .text {
-            max-width: 50%;
-        }
-        .carousel-item .text h1 {
-            font-size: 48px;
-            font-weight: 600;
-            margin: 0;
-        }
-        .carousel-item .text h1 span {
-            color: #3b82f6;
-        }
-        .carousel-item .text p {
-            color: #6b7280;
-            margin: 20px 0;
-            font-size: 18px;
-        }
-        .carousel-item .buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-        .carousel-item .buttons a {
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 16px;
-        }
-        .carousel-item .buttons .primary {
-            background: #3b82f6;
-            color: #fff;
-        }
-        .carousel-item .buttons .secondary {
-            background: #e0e7ff;
-            color: #3b82f6;
-        }
-        .carousel-item .image {
-            max-width: 50%;
-        }
-        .carousel-item .image img {
-            width: 100%;
-            height: auto;
-        }
-        .about-section, .services-section, .contact-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            width: 100%;
-        }
-        .about-section h1, .services-section h1, .contact-section h1 {
-            font-size: 48px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        .about-section p, .services-section p, .contact-section p {
-            color: #6b7280;
-            margin-bottom: 20px;
-            max-width: 800px;
-            font-size: 18px;
-        }
-        .about-section .team, .services-section .services-list, .contact-section .contact-methods {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            width: 100%;
-        }
-        .about-section .team-member, .services-section .service-item, .contact-section .contact-method {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            max-width: 300px;
-            width: 100%;
-        }
-        .about-section .team-member strong, .services-section .service-item strong {
-            color: #3b82f6;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .contact-section .contact-method i {
-            color: #3b82f6;
-            font-size: 24px;
-        }
-        .contact-section .contact-method span {
-            color: #6b7280;
-        }
-        .team-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            width: 100%;
-        }
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #fff;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        box-sizing: border-box;
+    }
+    .header .logo {
+        font-size: 24px;
+        font-weight: 600;
+        color: #3b82f6;
+    }
+    .header .nav {
+        display: flex;
+        gap: 20px;
+    }
+    .header .nav a {
+        text-decoration: none;
+        color: #6b7280;
+        font-weight: 500;
+        cursor: pointer;
+        position: relative; /* Necessário para posicionar o sublinhado */
+    }
+    /* Estilo para o link quando estiver selecionado (ativo) */
+    .header .nav a.active {
+        color: #3b82f6; /* Cor do texto ativa */
+        font-weight: 600; /* Peso de fonte mais forte */
+    }
+    /* Adicionando sublinhado azul ao selecionar */
+    .header .nav a.active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px; /* A distância entre o texto e o sublinhado */
+        left: 0;
+        width: 100%;
+        height: 2px; /* Espessura do sublinhado */
+        background-color: #3b82f6; /* Cor azul do sublinhado */
+    }
+    .carousel {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+    }
+    .carousel-inner {
+        display: flex;
+        height: 100%;
+        transition: transform 0.5s ease-in-out;
+    }
+    .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        text-align: center;
+    }
+    .carousel-item .text {
+        max-width: 50%;
+    }
+    .carousel-item .text h1 {
+        font-size: 48px;
+        font-weight: 600;
+        margin: 0;
+    }
+    .carousel-item .text h1 span {
+        color: #3b82f6;
+    }
+    .carousel-item .text p {
+        color: #6b7280;
+        margin: 20px 0;
+        font-size: 18px;
+    }
+    .carousel-item .buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+    .carousel-item .buttons a {
+        text-decoration: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+    }
+    .carousel-item .buttons .primary {
+        background: #3b82f6;
+        color: #fff;
+    }
+    .carousel-item .buttons .secondary {
+        background: #e0e7ff;
+        color: #3b82f6;
+    }
+    .carousel-item .image {
+        max-width: 50%;
+    }
+    .carousel-item .image img {
+        width: 100%;
+        height: auto;
+    }
+    .about-section, .services-section, .contact-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+    .about-section h1, .services-section h1, .contact-section h1 {
+        font-size: 48px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+    .about-section p, .services-section p, .contact-section p {
+        color: #6b7280;
+        margin-bottom: 20px;
+        max-width: 800px;
+        font-size: 18px;
+    }
+    .about-section .team, .services-section .services-list, .contact-section .contact-methods {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+    }
+    .about-section .team-member, .services-section .service-item, .contact-section .contact-method {
+        background: #f1f5f9;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        max-width: 300px;
+        width: 100%;
+    }
+    .about-section .team-member strong, .services-section .service-item strong {
+        color: #3b82f6;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .contact-section .contact-method i {
+        color: #3b82f6;
+        font-size: 24px;
+    }
+    .contact-section .contact-method span {
+        color: #6b7280;
+    }
+    .team-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+    }
   </style>
  </head>
  <body>
@@ -302,8 +318,7 @@
         Entre em contato.
        </h1>
        <p>
-        
-Gostaríamos muito de ouvir de você! Se você tiver alguma dúvida sobre nossos serviços, precisar de suporte ou apenas quiser dizer olá, sinta-se à vontade para entrar em contato conosco. 
+        Gostaríamos muito de ouvir de você! Se você tiver alguma dúvida sobre nossos serviços, precisar de suporte ou apenas quiser dizer olá, sinta-se à vontade para entrar em contato conosco. 
        </p>
        <div class="contact-methods">
         <div class="contact-method">
@@ -341,6 +356,12 @@ Gostaríamos muito de ouvir de você! Se você tiver alguma dúvida sobre nossos
         function updateCarousel(index) {
             const width = carouselInner.clientWidth;
             carouselInner.style.transform = `translateX(-${index * width}px)`;
+
+            // Remover a classe active de todos os links
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Adicionar a classe active ao link clicado
+            navLinks[index].classList.add('active');
         }
 
         navLinks.forEach((link, index) => {
